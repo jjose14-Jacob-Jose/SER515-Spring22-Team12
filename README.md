@@ -73,4 +73,38 @@ You could set it permanently with below instead. Use Admin access for the same.
 setx -m Qt5_DIR C:\Qt\5.15.0\msvc2019_64 
 setx -m QT_QPA_PLATFORM_PLUGIN_PATH C:\Qt\5.15.0\msvc2019_64\plugins\platforms 
 
---------------------------------------------------------------------------------------------------------------------------------------------       
+-------------------------------------------------------------------------------------------------------------------------------------------- 
+
+- Install OpenSSL
+
+Download the Win64 OpenSSL v1.1.1L OpenSSL installer from ( https://slproweb.com/products/Win32OpenSSL.html ). 
+Scroll to the bottom of the page and download Win64 OpenSSL v1.1.1L. Don’t download the Win32 or Light versions.
+
+Run the installer with default parameters, as the following commands assume you used the default installation directory.
+
+This command sets an environment variable that persists over sessions:
+
+< setx -m OPENSSL_CONF "C:\Program Files\OpenSSL-Win64\bin\openssl.cfg" >
+
+You will also need to append the OpenSSL-Win64 bin folder to your PATH. 
+You can do this by clicking the Windows icon, typing “Environment Variables”, then clicking on “Edit the system environment variables”. 
+In the resulting dialog, click “Environment Variables”, then click “Path” on the bottom pane, finally click “Edit” and add the path below.
+
+< C:\Program Files\OpenSSL-Win64\bin\ >
+
+-------------------------------------------------------------------------------------------------------------------------------------------- 
+
+- Install Visual Studio
+
+Install Visual Studio 2021.
+
+If you already have a paid version of Visual Studio 2021 (Professional, Enterprise), skip this step.
+
+Microsoft provides a free of charge version of Visual Studio 2021, named Community, which can be used to build applications that use ROS 2. 
+You can download the installer directly through this link. ( https://code.visualstudio.com/updates/v1_64 )
+
+Make sure that the Visual C++ features are installed.
+
+An easy way to make sure they’re installed is to select the Desktop development with C++ workflow during the install. 
+
+Make sure that no C++ CMake tools are installed by unselecting them in the list of components to be installed.     
