@@ -129,8 +129,28 @@ setx -m QT_QPA_PLATFORM_PLUGIN_PATH C:\Qt\5.15.0\msvc2019_64\plugins\platforms
 
 -------------------------------------------------------------------------------------------------------------------------------------------- 
 -RQT Dependencies
+
+Open Command Prompt with administrative privileges and run the following commands. 
+
+python -m pip install -U pydot PyQt5
+
+choco install graphviz
+
+Then a directory will be created at the location 'C:\Program Files\Graphviz\bin.
+
+Add the 'bin' of this directory (Graphviz) to your environmental variables PATH.
+
 -------------------------------------------------------------------------------------------------------------------------------------------- 
 -Downloading ROS2
+
+Go to "https://github.com/ros2/ros2/releases" and download the latest package for Windows. It should have a name like 'ros2-foxy-*-windows-AMD64.zip'. 
+
+Here, you can click on the following URL to download ROS 2 Foxy.
+"https://github.com/ros2/ros2/releases/download/release-foxy-20220208/ros2-foxy-20220208-windows-release-amd64.zip".
+
+
+Unpack the zip file to the directory "C:\dev\ros2_foxy"
+
 -------------------------------------------------------------------------------------------------------------------------------------------- 
 -Environment Setup
 -------------------------------------------------------------------------------------------------------------------------------------------- 
