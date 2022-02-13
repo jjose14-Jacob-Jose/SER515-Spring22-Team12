@@ -31,7 +31,26 @@ Team Details
 --------------------------------------------------------------------------------------------------------------------------------------------
 Installation
 --------------------------------------------------------------------------------------------------------------------------------------------
--Choclatey
+-Chocolatey
+
+Install Chocolatey
+
+Follow steps from the following link: https://chocolatey.org/install
+
+First, ensure that you are using an administrative shell - you can also install as a non-admin, check out Non-Administrative Installation.
+Install with powershell.exe
+
+
+Run Get-ExecutionPolicy. If it returns Restricted, then run Set-ExecutionPolicy AllSigned or Set-ExecutionPolicy Bypass -Scope Process.
+Now run the following command:
+
+Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+
+Paste the copied text into your shell and press Enter.
+
+Wait a few seconds for the command to complete.
+
+If you don't see any errors, you are ready to use Chocolatey! Type choco or choco -? now, or see Getting Started for usage instructions.
 
 --------------------------------------------------------------------------------------------------------------------------------------------
 -Python
@@ -102,6 +121,33 @@ Since you are using a precompiled ROS version, we have to tell it where to find 
 
 --------------------------------------------------------------------------------------------------------------------------------------------
 -Install Dependencies
+
+You will need to append the CMake bin folder C:\Program Files\CMake\bin to your PATH.
+
+Please download these packages from this GitHub repository.
+
+asio.1.12.1.nupkg
+
+bullet.2.89.0.nupkg
+
+cunit.2.1.3.nupkg
+
+eigen-3.3.4.nupkg
+
+tinyxml-usestl.2.6.2.nupkg
+
+tinyxml2.6.0.0.nupkg
+
+log4cxx.0.10.0.nupkg
+
+Once these packages are downloaded, open an administrative shell and execute the following command:
+
+choco install -y -s <PATH\TO\DOWNLOADS> asio cunit eigen tinyxml-usestl tinyxml2 log4cxx bullet
+Please replace <PATH\TO\DOWNLOADS> with the folder you downloaded the packages to.
+
+You must also install some python dependencies for command-line tools:
+
+python -m pip install -U catkin_pkg cryptography empy ifcfg lark-parser lxml netifaces numpy opencv-python pyparsi
 -------------------------------------------------------------------------------------------------------------------------------------------- 
 - Install Qt5:
 
