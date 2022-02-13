@@ -199,7 +199,21 @@ Unpack the zip file to the directory "C:\dev\ros2_foxy"
 
 -------------------------------------------------------------------------------------------------------------------------------------------- 
 -Environment Setup
+
+Start a command shell and source the ROS 2 setup file to set up the workspace:
+
+call C:\dev\ros2_foxy\local_setup.bat
+
+It is normal that the previous command, if nothing else went wrong, outputs “The system cannot find the path specified.” exactly once.
+
 -------------------------------------------------------------------------------------------------------------------------------------------- 
+
 -Examples
 
-  
+In a command shell, set up the ROS 2 environment as described and then run a C++ talker:
+
+ros2 run demo_nodes_cpp talker
+
+Start another command shell and run a Python listener:
+
+ros2 run demo_nodes_py listener
