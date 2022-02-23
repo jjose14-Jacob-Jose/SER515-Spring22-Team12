@@ -217,3 +217,126 @@ ros2 run demo_nodes_cpp talker
 Start another command shell and run a Python listener:
 
 ros2 run demo_nodes_py listener
+
+-------------------------------------------------------------------------------------------------------------------------------------------- 
+
+Gazebo (Windows)
+ - Prerequisites: 30Gb free disk space
+ 
+Installation:
+
+- Create directory in the root
+  mkdir gz-ws
+  cd gz-ws
+
+- Download all below dependencies and extract into folder created previously
+  https://s3.amazonaws.com/osrf-distributions/win32/deps/curl-7.57.0-vc15-x64-dll-MD.zip
+  https://s3.amazonaws.com/osrf-distributions/win32/deps/libyaml-0.1.7-vc15-x64-md.zip
+  https://s3.amazonaws.com/osrf-distributions/win32/deps/dlfcn-win32-vc15-x64-dll-MD.zip
+  https://s3.amazonaws.com/osrf-distributions/win32/deps/jsoncpp-1.8.4-vc15-x64-dll-MD.zip  
+  https://s3.amazonaws.com/osrf-distributions/win32/deps/protobuf-3.4.1-vc15-x64-dll-MD.zip
+  https://s3.amazonaws.com/osrf-distributions/win32/deps/libzip-1.4.0_zlip-1.2.11_vc15-x64-dll-MD.zip
+  https://s3.amazonaws.com/osrf-distributions/win32/deps/zziplib-0.13.62-vc12-x64-release-debug.zip
+  https://s3.amazonaws.com/osrf-distributions/win32/deps/FreeImage3180Win32Win64.zip
+  https://s3.amazonaws.com/osrf-distributions/win32/deps/boost_1_67_0.zip
+  https://s3.amazonaws.com/osrf-distributions/win32/deps/ogre-sdk-1.10.12-vc15-x64.zip
+  https://s3.amazonaws.com/osrf-distributions/win32/deps/bzip2-1.0.6-vc12-x64-release-debug.zip
+  https://s3.amazonaws.com/osrf-distributions/win32/deps/tbb43_20141023oss_win.zip
+  https://s3.amazonaws.com/osrf-distributions/win32/deps/qt-opensource-windows-x86-msvc2015_64-5.7.0.zip
+  https://s3.amazonaws.com/osrf-distributions/win32/deps/qwt_6.1.2~osrf_qt5.zip
+  https://s3.amazonaws.com/osrf-distributions/win32/deps/libzmq-4.2.3_cppzmq-4.2.2_vc15-x64-dll-MD.zip
+
+- Install CMake and add it into the path
+  http://www.cmake.org/download/
+
+- Install Ruby and add it into system path
+  http://rubyinstaller.org/downloads/  
+  
+- Clone below into folder created
+   CMake  : git clone https://github.com/ignitionrobotics/ign-cmake -b ign-cmake0
+   Common : git clone https://github.com/ignitionrobotics/ign-common -b ign-common1
+   Fuel Tools  : git clone https://github.com/ignitionrobotics/ign-fuel-tools -b ign-fuel-tools1
+   Math : git clone https://github.com/ignitionrobotics/ign-math -b ign-math4
+   Ignition Msgs : git clone https://github.com/ignitionrobotics/ign-msgs -b ign-msgs1
+   Transport :git clone https://github.com/ignitionrobotics/ign-transport -b ign-transport4
+   Sdformat: git clone https://github.com/osrf/sdformat -b sdf6
+   Gazebo:  git clone https://github.com/osrf/gazebo -b gazebo9
+
+
+-  Load compiler: Execute below command (Path can be different for each user)
+
+"C:\Program Files\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvarsall.bat" x86_amd64  
+
+
+ - Configure and build Ignition CMake. Post this CMake will be installed in gz-ws/ign-cmake/build/install/Release
+
+cd ign-cmake
+.\configure
+nmake
+nmake install
+
+
+- Configure and build Ignition Math. Post this Math will be installed gz-ws/ign-math/build/install/Release
+
+cd ign-math
+.\configure
+nmake
+nmake install
+
+- Configure and build Ignition Common. Post this Common will be installed gz-ws/ign-common/build/install/Release.
+
+cd ign-common
+.\configure
+nmake
+nmake install
+
+- Configure and build Ignition Fuel Tools. Post this Fuel Tools will be installed in gz-ws/ign-fuel-tools/build/install/Release.
+
+cd ign-fuel-tools
+.\configure
+nmake
+nmake install
+
+- Configure and build Ignition Msgs. Post this, Ignition Msgs will be installed in gz-ws/ign-msgs/build/install/Release
+
+cd ..\..\ign-msgs
+mkdir build
+cd build
+..\configure
+nmake
+nmake install
+You should now have an installation of 
+
+- Configure and build Ignition Transport. Post this, Ignition Transport will be installed in gz-ws/ign-transport/build/install/Release
+
+cd ..\..\ign-transport
+mkdir build
+cd build
+..\configure
+nmake
+nmake install
+
+
+- Configure and build Sdformat. Post this, Sdformat will be installed in gz-ws/sdformat/build/install/Release or gz-ws/sdformat/build/install/Debug.
+
+cd ..\..\sdformat
+mkdir build
+cd build
+..\configure
+nmake
+nmake install
+You should now have an installation of 
+
+- Configure and build Gazebo:
+
+cd ..\..\gazebo
+mkdir build
+cd build
+..\configure
+nmake gzclient
+nmake gzserver
+nmake install
+
+Installation of Gazebo will be in gz-ws/gazebo/build/install/Release or gz-ws/gazebo/build/install/Debug.
+
+-------------------------------------------------------------------------------------------------------------------------------------------- 
