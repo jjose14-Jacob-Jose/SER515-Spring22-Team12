@@ -340,3 +340,28 @@ nmake install
 Installation of Gazebo will be in gz-ws/gazebo/build/install/Release or gz-ws/gazebo/build/install/Debug.
 
 -------------------------------------------------------------------------------------------------------------------------------------------- 
+Terrain and Levels 
+
+We’ll be making a simple outdoor level that the player can walk through. We’ll be putting various objects that are typical in a video game. We’ll put trees, hills, a campfire, and some music. Basically you’ll go through the things in Unity that are already there. This is so you would know that you don’t need to create source code for these things from scratch anymore. Now go to GameObject > 3D object > Terrain > Create Terrain. You should see a large flat platform appear. This is your terrain
+Terrain Tool.
+
+In the Inspector View, you’ll see a new kind of component, the Terrain component. Look at the row of buttons in your Terrain component. These are tools that will help you spice up your ground terrain.
+
+Go ahead and click the leftmost button. This is the Raise/Lower Terrain tool. Now move your mouse cursor to that flat land in the Scene View. You’ll see a blue glow following your mouse. This is your terrain brush. Go ahead and left-click. You’ll see a mound form up. Just imagine as if you are painting, but instead of putting in colors, you’ll be putting in mountains.
+
+Feel free to create mountains in any way you want. If you make a mistake, you can undo it with Ctrl + Z. Further down the terrain component, you’ll see a selection of brush shapes. Go ahead and try them.
+
+Adding Texture 
+
+Our terrain is looking pretty bare with all that gray color. We’ll make use of an image to give better color to our terrain. Now you’ll see the Project View has a new folder called “Standard Assets”. Inside this are a few files that we’ll be using. Click on the fourth button on the terrain tools. This is the Paint Texture tool. Add the grassy hill texture to the albedo component. Now you’ll see that image used on the terrain.
+
+Adding more texture
+
+You can add another “texture” the same way. Choose Rock texture this time. Use 50 for the “Tile Size X” and “Tile Size Y” values. Now go ahead and paint on your mountains. You can add as many new “textures” as you want and paint with them.
+
+Installing the Terrain Editor
+
+First, go to Window -> Package Manager and select Unity Registry in the Packages drop-down menu in the upper left corner. Select the settings gear in the top right, then select Advanced Project Settings. Make sure the Enable Preview Packages option is checked.
+Now, in the search box in the upper right corner, enter Terrain Tool. The Install button will appear in the bottom right corner. Press it and wait until the download completes.
+
+Go to Window -> Terrain -> Terrain Toolbox and open it.
