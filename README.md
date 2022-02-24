@@ -365,3 +365,41 @@ First, go to Window -> Package Manager and select Unity Registry in the Packages
 Now, in the search box in the upper right corner, enter Terrain Tool. The Install button will appear in the bottom right corner. Press it and wait until the download completes.
 
 Go to Window -> Terrain -> Terrain Toolbox and open it.
+
+Basically, it’s a window containing a toolbar with some buttons on the top.Those four buttons are the main Toolbox tabs.
+
+Unity added a terrain gizmo. Activate it by clicking the checkbox next to Gizmo in the Create New Terrain tab.
+
+With this tool, it’s easy to check the boundaries and overall height of your terrains. It also gives you an intuitive idea of the extension a terrain has. Unfortunately, you can only use it on one terrain at a time.
+
+What’s it good for? For example, say you want to raise your overall terrain height by 50%. The gizmo will clearly show you both positive and negative headroom, like this:
+
+Heightmaps are among the most important and fun tools at your disposal.
+
+Now, go to the Terrain Toolbox. Select the Create New Terrain tab and click the Import Heightmap toggle to activate it.
+
+Terrain Texture:
+
+Do this:
+
+1.	Select the Terrain_1 GameObject.
+2.	Go to the Terrain component.
+3.	Select the Paint Terrain tab.
+4.	In the first dropdown below the row of tabs, select Paint Texture.
+5.	Find the Layers section.
+6.	Click Add Layer.
+7.	Find TextureMountainLayer 1 and select it.
+
+Go to the Terrain Settings tab in the same component and adjust Base Map Distance to maximum.
+
+The Terrain Settings tab on the Toolbox is the same as the Terrain Settings tab on the Terrain component… but you can only apply the former, as you’ve read before, to all terrains.
+
+Terrain Utilities Tab
+
+Welcome to one the most important tools. Terrain Utilities is where the Toolbox really exploits its “one-for-all” power.
+
+As a quick introduction, this tab allows you to safely erase terrains. No more lost terrains cluttering your project. Also, you can manage all your layers and splatmaps from here.
+
+-------------------------------------------------------------------------------------------------------------------------------------------- 
+
+
