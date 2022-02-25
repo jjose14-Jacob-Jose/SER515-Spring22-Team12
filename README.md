@@ -402,4 +402,50 @@ As a quick introduction, this tab allows you to safely erase terrains. No more l
 
 -------------------------------------------------------------------------------------------------------------------------------------------- 
 
+Rover Wheels 
+
+Documentation of Wheels:
+
+
+-	In the project, we will be creating 2-wheeled rover just like Gopigo3 with collider that will make the rover more realistic in terms of physical collisions with objects.
+
+
+Creating planes for placing rover:
+
+-	Now, to create the sample plane go to GameObject->3D object-> Plane. To make the plane to zero transform click on transform at the right side of the plane and click reset.
+We can change the length of the plane in X, Y or Z direction we can change the scale.
+
+Creating base component for rover:
+
+-	To create a base component, we can go to GameObject -> Create Empty and change the name of component to rover.
+
+-	To use wheel colliders, we must have a Rigidbody attached to the root which is rover. We can add it by clicking to rover and then add a component Rigidbody to it. 
+
+-	We can change properties like Mass, drag, angular drag in Rigidbody.
+
+-	To create a car body part, we can take cube as parent box under rover.
+
+
+
+
+Creating wheels component for rover:
+
+-	To create wheels component add an empty child to rover and name it to wheels. Reset its transform and create empty child under wheels.
+-	Change the name of the child to left and set the position of it according to the size. For example, (-1,0,1). Add wheel collider component to that wheel.
+-	Duplicate the left wheel copy it under wheels and rename it to right wheels. Change the position of X for right wheel.
+i.e., (1,0,1). And the wheels will be shown in the model.
+
+
+References:
+
+i)	https://www.diva-portal.org/smash/get/diva2:1334348/FULLTEXT01.pdf
+
+ii)	https://docs.unity3d.com/Manual/WheelColliderTutorial.html
+
+iii)	https://www.theconstructsim.com/ros-projects-exploring-ros-using-2-wheeled-robot-part-1/
+
+-------------------------------------------------------------------------------------------------------------------------------------------- 
+ 
+
+
 
