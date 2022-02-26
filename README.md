@@ -446,6 +446,40 @@ iii)	https://www.theconstructsim.com/ros-projects-exploring-ros-using-2-wheeled-
 
 -------------------------------------------------------------------------------------------------------------------------------------------- 
  
+ Maze
+
+ Documentation for maze:
+
+
+A maze is a collection or areas linked together such that you can start anywhere and from there be able visit every other area. The shape and layout of these areas and how exactly they are connected defines the character of the maze.
+
+For Maze:
+-There are several ways of designing maze in unity.
+Basic :
+-For creating maze, we need to first create a plane.
+-After creating plane, we need to first put walls.
+-A wall is a 3D object, so add cube and gives it a shape of wall by adjusting its coordinates.
+-Similarly create other duplicate walls and decide their sizes. After this put each wall adjacently in a way that they form a maze-like structure.
+Reference: https://www.youtube.com/watch?v=L8sfSBLBRGY
+		https://catlikecoding.com/unity/tutorials/maze/
+
+Using Algorithm:
+The other way of creating a maze is using a maze generation algorithm. Recursive Backtracking is one such algorithm.
+Here’s the mile-high view of recursive backtracking:
+1.	Choose a starting point in the field.
+2.	Randomly choose a wall at that point and carve a passage through to the adjacent cell, but only if the adjacent cell has not been visited yet. This becomes the new current cell.
+3.	If all adjacent cells have been visited, back up to the last cell that has uncarved walls and repeat.
+4.	The algorithm ends when the process has backed all the way up to the starting point.
+
+Reference : http://weblog.jamisbuck.org/2010/12/27/maze-generation-recursive-backtracking
+
+-Another method for creating maze uses unity terrain tool.
+Reference: https://www.youtube.com/watch?v=S8XVGMDZM8U 
+
+However, the most relevant method for designing maze in our project is the basic one mentioned above.
+
+-------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------
 
 
 
