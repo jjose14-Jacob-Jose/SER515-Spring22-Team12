@@ -1,0 +1,31 @@
+Steps:
+1. Open PowerShell in administrative mode and run the command:
+Set-ExecutionPolicy unrestricted
+
+2. Then run the shell script using command:
+.\install_ROS2.psi
+
+3. Enter 'A' when asked for permissions.
+
+4. If RTI Connext for your Visual Studio IDE (2017 or 2015) has been downloaded by the script, then go to Step #8.
+5. To download RTI Connext, open another PowerShell in administrative mode, and run the command:
+Set-ExecutionPolicy unrestricted
+
+6. Run one of the following command based on your Visual Studio Version. You can also download the .exe file from "https://www.rti.com/free-trial/dds-files".
+2017
+Invoke-WebRequest -Uri "https://s3.amazonaws.com/RTI/Bundles/6.1.0/Evaluation/rti_connext_dds-6.1.0-lm-x64Win64VS2017.exe" -OutFile $current_directory_path
+
+2015
+Invoke-WebRequest -Uri "https://s3.amazonaws.com/RTI/Bundles/6.1.0/Evaluation/rti_connext_dds-6.1.0-lm-x64Win64VS2015.exe" -OutFile $current_directory_path
+
+7. Install RTI Connext on your machine.
+
+
+8 Rename the following directory. (This is because ROS2 looks for RTI Connext DDS of version 5.3.1).
+Old Name:
+C:\Program Files\rti_connext_dds-6.1.0
+
+New Name:
+C:\Program Files\rti_connext_dds-5.3.1.
+
+9. ROS2 installation complete.

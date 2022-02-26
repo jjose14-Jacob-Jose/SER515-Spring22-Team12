@@ -1,4 +1,7 @@
-# Power Shell Script to install ROS2 on Window OS. 
+# Power Shell Script to install ROS2 on Window OS.
+
+#Please run the following command in Powershell opened in 'administrative' mode, before running this script.
+#Set-ExecutionPolicy unrestricted
 
 $current_directory_path = Get-Location
 
@@ -66,3 +69,33 @@ python -m pip install -U pydot PyQt5
 #Installing GraphViz and appending it to Path
 choco install graphviz
 [Environment]::SetEnvironmentVariable("PATH", $Env:PATH + ";C:\Program Files\Graphviz\bin", [EnvironmentVariableTarget]::Machine)
+
+echo "Downloading ROS2"
+
+Invoke-WebRequest -Uri $URL_for_ROS2 -OutFile $current_directory_path$fileName_of_ROS2
+
+#$Invoke-WebRequest -Uri $URL_for_ROS2 -OutFile  $current_directory_path$fileName_of_ROS2
+
+echo "Installing ROS2"
+Expand-Archive -LiteralPath "$($current_directory_path)$fileName_of_ROS2" -DestinationPath "$destination_for_unzipping_ROS2"
+
+#Downloading RTI Connext for Visual Studio 2017
+echo " Downloading RTI Connext for Visual Studio 2017, 2015"
+Invoke-WebRequest -Uri "https://s3.amazonaws.com/RTI/Bundles/6.1.0/Evaluation/rti_connext_dds-6.1.0-lm-x64Win64VS2017.exe" -OutFile $current_directory_path
+
+echo " Downloading RTI Connext for Visual Studio 2015"
+Invoke-WebRequest -Uri "https://s3.amazonaws.com/RTI/Bundles/6.1.0/Evaluation/rti_connext_dds-6.1.0-lm-x64Win64VS2015.exe" -OutFile $current_directory_path
+
+#Moving the Zip file to the path as directed by ROS2 Manual
+echo "Moving ROS2 file to correct path as given on ROS2 Docs."
+Move-Item C:\dev\ros2_foxy\ros2-windows C:\temp_folder_for_Ros2
+Move-Item C:\temp_folder_for_Ros2\* C:\dev\ros2_foxy
+Remove-Item C:\temp_folder_for_Ros2
+#Making Execution Policy restricted again
+
+Set-ExecutionPolicy Restricted
+
+
+echo "Installation Complete"
+
+echo "Please rename the RTI Connext Directory at (C:\Program Files\rti_connext_dds-6.1.0) to C:\Program Files\rti_connext_dds-5.3.1."
