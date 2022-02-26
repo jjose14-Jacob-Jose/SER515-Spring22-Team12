@@ -13,10 +13,10 @@ Set-ExecutionPolicy unrestricted
 
 6. Run one of the following command based on your Visual Studio Version. You can also download the .exe file from "https://www.rti.com/free-trial/dds-files".
 2017
-Invoke-WebRequest -Uri "https://s3.amazonaws.com/RTI/Bundles/6.1.0/Evaluation/rti_connext_dds-6.1.0-lm-x64Win64VS2017.exe" -OutFile $current_directory_path
+Invoke-WebRequest -Uri "https://s3.amazonaws.com/RTI/Bundles/6.1.0/Evaluation/rti_connext_dds-6.1.0-lm-x64Win64VS2017.exe" -OutFile "RTI_Connext_VS_2017.exe"
 
 2015
-Invoke-WebRequest -Uri "https://s3.amazonaws.com/RTI/Bundles/6.1.0/Evaluation/rti_connext_dds-6.1.0-lm-x64Win64VS2015.exe" -OutFile $current_directory_path
+Invoke-WebRequest -Uri "https://s3.amazonaws.com/RTI/Bundles/6.1.0/Evaluation/rti_connext_dds-6.1.0-lm-x64Win64VS2015.exe" -OutFile "RTI_Connext_VS_2015.exe"
 
 7. Install RTI Connext on your machine.
 
@@ -28,4 +28,7 @@ C:\Program Files\rti_connext_dds-6.1.0
 New Name:
 C:\Program Files\rti_connext_dds-5.3.1.
 
-9. ROS2 installation complete.
+9. Run "python --version" to check if Python has been installed, else install Python from
+"https://www.python.org/downloads/"
+
+10. ROS2 installation complete.
