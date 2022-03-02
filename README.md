@@ -480,6 +480,38 @@ However, the most relevant method for designing maze in our project is the basic
 
 -------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------
+C# Scripts:
+The behavior of GameObjects is controlled by the Components that are attached to them. Although Unity’s built-in Components can be very versatile, you will soon find you need to go beyond what they can provide to implement your own gameplay features. Unity allows you to create your own Components using scripts. These allow you to trigger game events, modify Component properties over time and respond to user input in any way you like.
+
+Unity supports the C# programming language natively. C# (pronounced C-sharp) is an industry-standard language similar to Java or C++.
+
+In addition to this, many other .NET languages can be used with Unity if they can compile a compatible DLL
+
+Creating Script:
+Unlike most other assets, scripts are usually created within Unity directly. You can create a new script from the Create menu at the top left of the Project panel or by selecting Assets > Create > C# Script from the main menu.
+
+The new script will be created in whichever folder you have selected in the Project panel. The new script file’s name will be selected, prompting you to enter a new name.
+
+Box Collider:
+The Box Collider is a basic cuboid-shaped collision primitive.
+
+Property:Function
+Is Trigger: If enabled,this Collider is used for triggering events, and is ignored by the physics engine
+Material: Reference to the Physics Material that determines how this Collider interacts with others.
+Center: The position of the Collider in the object’s local space.
+Size: The size of the Collider in the X, Y, Z directions.
+
+Details:
+Box Colliders are rectangular cuboids and are useful for items such as crates or chests. However, you can use a thin box as a floor, wall or ramp. The Box Collider is also a useful element in a Compound Collider.
+
+To edit the box’s shape, press the Edit Collider button in the Inspector,To exit the Collider Edit Mode press the Edit Collider button again. A vertex appears in the center of each face of the Box Collider in Edit Mode. To move the vertices, drag them when the mouse is over the vertex to make the Box Collider bigger and smaller.
+
+Wheel Colider:
+The Wheel Collider is a special collider for grounded vehicles. It has built-in collision,detection, wheel physics, and a slip-based tire friction model. It can be used for objects other than wheels, but it is specifically designed for vehicles with wheels.
+
+-------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------
+
 
 
 
