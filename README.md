@@ -480,6 +480,9 @@ However, the most relevant method for designing maze in our project is the basic
 
 -------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------
+
+Rover Structure Creation and Movement:
+
 C# Scripts:
 The behavior of GameObjects is controlled by the Components that are attached to them. Although Unity’s built-in Components can be very versatile, you will soon find you need to go beyond what they can provide to implement your own gameplay features. Unity allows you to create your own Components using scripts. These allow you to trigger game events, modify Component properties over time and respond to user input in any way you like.
 
@@ -508,6 +511,62 @@ To edit the box’s shape, press the Edit Collider button in the Inspector,To ex
 
 Wheel Colider:
 The Wheel Collider is a special collider for grounded vehicles. It has built-in collision,detection, wheel physics, and a slip-based tire friction model. It can be used for objects other than wheels, but it is specifically designed for vehicles with wheels.
+
+
+Rover Structure Creation and Movement:
+
+This are the steps:
+
+[1] - Create a new Project
+
+[2] - Add a terrain
+
+[3] - Import some Assets
+The assets to import are the environment elements and the SmoothFollow script.
+
+[4] - Model the terrain
+Now lets model the terrain creating some mountains, applying textures, like grass and drawing the path.
+
+[5] - Add a empty game object
+This gameObject will be used as a container for the rover.
+
+[6] - Add a cube.
+Add a cube to the rover gameObject. Change the position of the cube for 0,0,0.
+Change the position of the gameObject rover so it stands inside the terrain.
+If you like you can add other cubes so the rover looks better. Add the cubes always as a child of the gameObject rover.
+Remover the cubes box colliders and add a rigidbody and a box collider to the gameObject rover.
+Change the box collider size so it matches the body of the rover.
+
+[7] - Add a cylinder
+The cylinder will be used to make the wheels. First we build one then its just copy and paste.
+Positioned the cylinder near the body of the rover, change the size and rotate it.
+It should look something like this.
+
+[8] - Remove the collider and add a wheelcollider
+Now that the wheel is in place remove the capsule collider and add a wheelcollider.
+This component is responsible for the calculations that will make the rover physics seam real.
+Last, but not least, make the wheel a child of the rover.
+If you test the rover, executing the scene, it will jump and the camera won't show the rover.
+First the camera, add the smoothfollow to it and define the target to be the rover. The distance should be 2.
+As for the rover it should have a mass of 1000, change it in the rigidbody.
+There it is. Just one wheel though.
+
+[9] - Copy and paste the Wheel
+At this point we should copy and past this wheel and position each in the corners of the rover.
+Each wheel should have a name according to the position.
+To make it possible to see the wheels spin we will add a material that looks like a rim.
+Next make a material with the texture and add the material to each wheel. It ain't pretty but its effective.
+
+[10] - Add a new C# script
+This script will control the behavior of the rover.
+This script should define an array for the wheels, the power of the motor and the max rotation angle of the side wheels.
+Drag the script to the rover gameObject and then drag each wheel to the array.
+Let's declare some private variables.
+And a function to simplify the code that needs to access the wheelcolliders.
+Next we need to read the user input and rotate the wheels colliders and the wheels
+After that the wheels should spin.
+In the end let's add the brakes and the engine.
+
 
 -------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------
