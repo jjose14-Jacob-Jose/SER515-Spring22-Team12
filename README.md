@@ -605,5 +605,23 @@ In the end let's add the brakes and the engine.
 ------------------------------------------------------------------
 
 
+Testing Of Wheels:
+
+-I have done testing of the wheels implemented in Unity 3D by Krishna, which was one of my task(#136) under US #107.
+- I first imported the work done by Krishna of wheels in my device and ran the project in Unity 3D.
+
+-I ran the project and I pointed out the following things:
+-> Friction is less. Wheels are moving by its own when it is at some elevation or suddenly is stopped. This need to be improved.
+->Sudden stop is not working well. It needs to be optimized and the wheels should stop properly when it is required to do suddenly.
+-> Rover is moving by its own when it is on slope of terrain. So that need to be balanced by setting the friction property properly.
+-> The Jump feature can be added to the wheels. This feature is not currently added but this might be helpful to tackle obstacles. It can be adjusted in future as per the need when the wheels are integrated with the original rover body.
+->Wheel colliders are working perfectly. The sample body implemented here is moving perfectly with the support of wheels.
+-> Body controlling through keyboard inputs is going smoothly. Wheels are moving without any failure and as per the requirement.
+->Rover is running well on terrain fields. The terrain made here is just sample to demonstrate the rover movement and the wheels are working well on it without any issues. 
+-> One important thing is that the wheels need to be connected with the chassis when it is integrated with the rover body. Here a gap can be seen between wheels and rover body but it is ok for now as this is just demonstration of working of wheels which is implemented correctly.
+-> Currently the wheels are moving according to the inputs given from the keyboard. This have to be made autonomous when integrated with the original body. 
+-> The controlling of the wheels needs to be improved.
+
+  Conclusively, the wheels are working well as of now with improvements required in the setting the friction property. And the jump feature needs to be added in the wheels.
 
 
