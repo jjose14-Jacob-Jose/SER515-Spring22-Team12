@@ -426,6 +426,39 @@ Creating base component for rover:
 -	To create a car body part, we can take cube as parent box under rover.
 
 
+Adding the mesh renderer component in wheels:
+-	Mesh in unity gives idea of the structure of vertex positions, and how they will be displayed on the screen.
+-	Mesh renderer is used to render the mesh. To take mesh from the asset and pass it to mesh renderer ‘Mesh Filter’ component is used.
+-	We can give the number of materials to be used in mesh renderer and the elements/materials.
+-	Lighting defines the shadows and illumination. For example, to specify how shadows are casted when a light is shined on renderer, Cast Shadows property is used.
+-	While designing on wheels, mesh renderer will be used to display wheels with different visual layers. 
+
+
+
+Implementing the wheels collider for rover:
+
+-	To add the script for wheel collider, under rover click add component-> New script. 
+-	Now we can create a class and the properties of the class like the following way:
+
+public class WheelInfo
+{
+	public WheelCollider wheelcollider;
+	public Transform visualwheel;
+}
+
+-	To change the steering angle of the wheel, we can use the steerAngle property. i.e.,
+
+public WheelInfo wheel1; //creating variable wheel1 of class wheelInfo
+
+wheel1.wheelcollider.steerAngle = a * b; //a and b can be any variables  	
+
+-	Similar to steerAngle, to change the motor torque and torque of brake, motorTorque and brakeTorque properties are used respectively.
+i.e., wheel1.wheelcollider.motorTorque and wheel1.wheelcollider.brakeTorque
+ 
+-	To find the whether the child with given name is present under gameobject, GetChild method is used. 
+
+For example, 
+		gameobject.transform.getChild(index).name
 
 
 Creating wheels component for rover:
