@@ -624,4 +624,23 @@ Testing Of Wheels:
 
   Conclusively, the wheels are working well as of now with improvements required in the setting the friction property. And the jump feature needs to be added in the wheels.
 
+Things accomplished after testing:
+
+In the testing of wheels, as a part of my task I have mentioned the things that has to be done. Some of the things that are required features in the project need to be implemented.
+Some examples of the tasks which need to be done are:
+-Adjusting the friction properly.
+-Adding the jump feature to the wheels.
+-Chassis for wheels has to be implemented.
+-Controlling of wheels need to be improved.
+These requirements are now fulfilled, and the work has been finished.
+The work done regarding these tasks is stated below:
+->The Jump feature is now added for the wheels. A new task namely Implementation of jump in wheels was done. I implemented jump by creating a new project in unity and creating a dummy object. This object was assigned as a rigid body and was enabled with the jump. Some obstacles were also created and the object was able to do jump over them. This feature then to be integrated with the wheels. It might be needed that this feature to be modified for the final integration of various components and can be updated accordingly.
+
+-> The next feature is the friction of wheels. Friction has to be adjusted so that the wheels do not slide on sudden stoppage. Earlier when wheels were stopped all of a sudden, they used to move some distance before stopping completely. But now this property is been perfectly modified and now the rover wheels stops as required.
+
+->Chassis is an important feature which has to implement so that the rover wheels can be connected with the body without showing any gap. Earlier some gap was there between wheels and body and to eliminate this gap and for proper connection, chassis has to be implemented. Chassis are now implemented by Krishna and now properly installed. The code regarding this is also pushed using a commit on github.
+
+->The controlling of the wheels is now improved considerably. Adjusting some properties like its friction, suspension and mass(according to gravity) has helped in improving it.
+
+-> Making rover wheels move without keyboard inputs will be done in later sprints.
 
