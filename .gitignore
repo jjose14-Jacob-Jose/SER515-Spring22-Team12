@@ -23,8 +23,8 @@
 hs_err_pid*
 
 #IntelliJ IDE files
-./idea
-./idea/
+.idea
+.idea/
 
 #Windows PowerShell backup files
 *.ps1.bak
