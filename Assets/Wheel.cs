@@ -18,13 +18,18 @@ public class Wheel : MonoBehaviour
     public WheelInfo rightWheel;
     public WheelInfo BL;
     public WheelInfo BR;
-
+    public float frontSensorPosition = 0.5f;
+    public float sensorLength = 3f;
+    public float sideSensorPosition = 0.2f;
+    public float frontSensorAngle = 30;
+  
     private void Start()
     {
         GetTheWheels();
     }
     private void FixedUpdate()
     {
+        Sensors();
         if(GetComponent<Rigidbody>().centerOfMass.y > 0)
         GetComponent<Rigidbody>().centerOfMass = Vector3.zero;
         float vert = Input.GetAxis("Vertical"); 
@@ -47,6 +52,49 @@ public class Wheel : MonoBehaviour
 
         UpdateVisualWheels();
     }
+
+    private void Sensors()
+    {
+        RaycastHit hit;
+        Vector3 sensorPosStart = transform.position;
+        sensorPosStart.z += frontSensorPosition;
+
+        //front center sensor
+        if(Physics.Raycast(sensorPosStart,transform.forward,out hit, sensorLength))
+        {
+            Debug.DrawLine(sensorPosStart, hit.point,Color.blue);
+        }
+
+        //front right sensor
+        sensorPosStart.x  += frontSensorPosition;
+        if (Physics.Raycast(sensorPosStart, transform.forward, out hit, sensorLength))
+        {
+            Debug.DrawLine(sensorPosStart, hit.point,Color.blue);
+
+        }
+
+        //front right angle sensor
+        if (Physics.Raycast(sensorPosStart, Quaternion.AngleAxis(frontSensorAngle, transform.up) * transform.forward, out hit, sensorLength))
+        {
+            Debug.DrawLine(sensorPosStart, hit.point, Color.blue);
+        }
+
+        //front left sensor
+        sensorPosStart.x -= 2 * frontSensorPosition;
+
+        if (Physics.Raycast(sensorPosStart, transform.forward, out hit, sensorLength))
+        {
+            Debug.DrawLine(sensorPosStart, hit.point,Color.blue);
+        }
+
+        //front left angle sensor
+        if (Physics.Raycast(sensorPosStart, Quaternion.AngleAxis(frontSensorAngle, transform.up) * transform.forward, out hit, sensorLength))
+        {
+            Debug.DrawLine(sensorPosStart, hit.point,Color.blue);
+        }
+
+    }
+
     private void UpdateVisualWheels()
     {
         Vector3 pos;
