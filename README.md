@@ -149,189 +149,182 @@ You must also install some python dependencies for command-line tools:
 ```bash
 python -m pip install -U catkin_pkg cryptography empy ifcfg lark-parser lxml netifaces numpy opencv-python pyparsi
 ````
+
 -------------------------------------------------------------------------------------------------------------------------------------------- 
 
-
-- Install Qt5:
+#### Install Qt5:
 
 This section is only required if you are building rviz.
 
-First get the installer from Qt’s website:
-
-https://www.qt.io/download
-
-Select the Open Source version and then the Qt Online Installer for Windows.
-
-Run the installer and install Qt5.
+- First get the installer from Qt’s [website](https://www.qt.io/download).
+- Select the Open Source version and then the Qt Online Installer for Windows.
+- Run the installer and install Qt5.
 
 We recommend you install it to the default location of C:\Qt, but if you choose somewhere else, make sure to update the paths below accordingly. When selecting components to install, the only thing you absolutely need is the appropriate MSVC 64-bit component under the Qt -> Qt 5.15.0 tree. We’re using 5.15.0 as of the writing of this document and that’s what we recommend since that’s all we test on Windows, but later Qt5 versions will probably work too. Be sure to select MSVC 2019 64-bit. After that, the default settings are fine.
 
-Finally, set the Qt5_DIR environment variable in the cmd.exe where you intend to build so that CMake can find it:
-
+ - Finally, set the Qt5_DIR environment variable in the cmd.exe where you intend to build so that CMake can find it:
+```bash
 set Qt5_DIR=C:\Qt\5.15.0\msvc2019_64
 set QT_QPA_PLATFORM_PLUGIN_PATH=C:\Qt\5.15.0\msvc2019_64\plugins\platforms
-
-You could set it permanently with below instead. Use Admin access for the same.
-
+````
+- You could set it permanently with below instead. Use Admin access for the same.
+```bash
 setx -m Qt5_DIR C:\Qt\5.15.0\msvc2019_64 
 setx -m QT_QPA_PLATFORM_PLUGIN_PATH C:\Qt\5.15.0\msvc2019_64\plugins\platforms 
-
+````
 -------------------------------------------------------------------------------------------------------------------------------------------- 
--RQT Dependencies
+#### RQT Dependencies
 
-Open Command Prompt with administrative privileges and run the following commands. 
-
+- Open Command Prompt with administrative privileges and run the following commands. 
+```bash
 python -m pip install -U pydot PyQt5
-
 choco install graphviz
-
-Then a directory will be created at the location 'C:\Program Files\Graphviz\bin.
-
-Add the 'bin' of this directory (Graphviz) to your environmental variables PATH.
-
--------------------------------------------------------------------------------------------------------------------------------------------- 
--Downloading ROS2
-
-Go to "https://github.com/ros2/ros2/releases" and download the latest package for Windows. It should have a name like 'ros2-foxy-*-windows-AMD64.zip'. 
-
-Here, you can click on the following URL to download ROS 2 Foxy.
-"https://github.com/ros2/ros2/releases/download/release-foxy-20220208/ros2-foxy-20220208-windows-release-amd64.zip".
-
-
-Unpack the zip file to the directory "C:\dev\ros2_foxy"
+````
+- Then a directory will be created at the location 'C:\Program Files\Graphviz\bin.
+- Add the 'bin' of this directory (Graphviz) to your environmental variables PATH.
 
 -------------------------------------------------------------------------------------------------------------------------------------------- 
--Environment Setup
+#### Downloading ROS2
 
-Start a command shell and source the ROS 2 setup file to set up the workspace:
+- [Go to](https://github.com/ros2/ros2/releases) and download the latest package for Windows.
+- It should have a name like 'ros2-foxy-*-windows-AMD64.zip'. 
+- Here, you can click on the [URL](https://github.com/ros2/ros2/releases/download/release-foxy-20220208/ros2-foxy-20220208-windows-release-amd64.zip) to download ROS 2 Foxy.
+- Unpack the zip file to the directory "C:\dev\ros2_foxy"
 
+-------------------------------------------------------------------------------------------------------------------------------------------- 
+#### Environment Setup
+
+- Start a command shell and source the ROS 2 setup file to set up the workspace:
+```bash
 call C:\dev\ros2_foxy\local_setup.bat
-
-It is normal that the previous command, if nothing else went wrong, outputs “The system cannot find the path specified.” exactly once.
+````
+- It is normal that the previous command, if nothing else went wrong, outputs “The system cannot find the path specified.” exactly once.
 
 -------------------------------------------------------------------------------------------------------------------------------------------- 
 
--Examples
+#### Examples
 
 In a command shell, set up the ROS 2 environment as described and then run a C++ talker:
-
+```bash
 ros2 run demo_nodes_cpp talker
-
-Start another command shell and run a Python listener:
-
+```
+- Start another command shell and run a Python listener:
+```bash
 ros2 run demo_nodes_py listener
-
+```
 -------------------------------------------------------------------------------------------------------------------------------------------- 
 
-Gazebo (Windows)
+#### Gazebo (Windows)
  - Prerequisites: 30Gb free disk space
  
 Installation:
 
 - Create directory in the root
+```bash
   mkdir gz-ws
   cd gz-ws
-
+```
 - Download all below dependencies and extract into folder created previously
-  https://s3.amazonaws.com/osrf-distributions/win32/deps/curl-7.57.0-vc15-x64-dll-MD.zip
-  https://s3.amazonaws.com/osrf-distributions/win32/deps/libyaml-0.1.7-vc15-x64-md.zip
-  https://s3.amazonaws.com/osrf-distributions/win32/deps/dlfcn-win32-vc15-x64-dll-MD.zip
-  https://s3.amazonaws.com/osrf-distributions/win32/deps/jsoncpp-1.8.4-vc15-x64-dll-MD.zip  
-  https://s3.amazonaws.com/osrf-distributions/win32/deps/protobuf-3.4.1-vc15-x64-dll-MD.zip
-  https://s3.amazonaws.com/osrf-distributions/win32/deps/libzip-1.4.0_zlip-1.2.11_vc15-x64-dll-MD.zip
-  https://s3.amazonaws.com/osrf-distributions/win32/deps/zziplib-0.13.62-vc12-x64-release-debug.zip
-  https://s3.amazonaws.com/osrf-distributions/win32/deps/FreeImage3180Win32Win64.zip
-  https://s3.amazonaws.com/osrf-distributions/win32/deps/boost_1_67_0.zip
-  https://s3.amazonaws.com/osrf-distributions/win32/deps/ogre-sdk-1.10.12-vc15-x64.zip
-  https://s3.amazonaws.com/osrf-distributions/win32/deps/bzip2-1.0.6-vc12-x64-release-debug.zip
-  https://s3.amazonaws.com/osrf-distributions/win32/deps/tbb43_20141023oss_win.zip
-  https://s3.amazonaws.com/osrf-distributions/win32/deps/qt-opensource-windows-x86-msvc2015_64-5.7.0.zip
-  https://s3.amazonaws.com/osrf-distributions/win32/deps/qwt_6.1.2~osrf_qt5.zip
-  https://s3.amazonaws.com/osrf-distributions/win32/deps/libzmq-4.2.3_cppzmq-4.2.2_vc15-x64-dll-MD.zip
+   - [Curl](https://s3.amazonaws.com/osrf-distributions/win32/deps/curl-7.57.0-vc15-x64-dll-MD.zip).
+   - [LibYaml](https://s3.amazonaws.com/osrf-distributions/win32/deps/libyaml-0.1.7-vc15-x64-md.zip).
+   - [dlfcn](https://s3.amazonaws.com/osrf-distributions/win32/deps/dlfcn-win32-vc15-x64-dll-MD.zip).
+   - [jsoncpp](https://s3.amazonaws.com/osrf-distributions/win32/deps/jsoncpp-1.8.4-vc15-x64-dll-MD.zip).  
+   - [protobuf](https://s3.amazonaws.com/osrf-distributions/win32/deps/protobuf-3.4.1-vc15-x64-dll-MD.zip).
+   - [libzip](https://s3.amazonaws.com/osrf-distributions/win32/deps/libzip-1.4.0_zlip-1.2.11_vc15-x64-dll-MD.zip).
+   - [zzip](https://s3.amazonaws.com/osrf-distributions/win32/deps/zziplib-0.13.62-vc12-x64-release-debug.zip).
+   - [FreeImage](https://s3.amazonaws.com/osrf-distributions/win32/deps/FreeImage3180Win32Win64.zip).
+   - [boost](https://s3.amazonaws.com/osrf-distributions/win32/deps/boost_1_67_0.zip).
+   - [ogre](https://s3.amazonaws.com/osrf-distributions/win32/deps/ogre-sdk-1.10.12-vc15-x64.zip).
+   - [bzip](https://s3.amazonaws.com/osrf-distributions/win32/deps/bzip2-1.0.6-vc12-x64-release-debug.zip).
+   - [tbb](https://s3.amazonaws.com/osrf-distributions/win32/deps/tbb43_20141023oss_win.zip).
+   - [qt](https://s3.amazonaws.com/osrf-distributions/win32/deps/qt-opensource-windows-x86-msvc2015_64-5.7.0.zip).
+   - [qwt](https://s3.amazonaws.com/osrf-distributions/win32/deps/qwt_6.1.2~osrf_qt5.zip).
+   - [libzmq](https://s3.amazonaws.com/osrf-distributions/win32/deps/libzmq-4.2.3_cppzmq-4.2.2_vc15-x64-dll-MD.zip).
+ 
 
-- Install CMake and add it into the path
-  http://www.cmake.org/download/
-
-- Install Ruby and add it into system path
-  http://rubyinstaller.org/downloads/  
-  
+- Install CMake and add it into the path. [Link to download](http://www.cmake.org/download/).
+- Install Ruby and add it into system path.[Link to download](http://rubyinstaller.org/downloads/).  
 - Clone below into folder created
-   CMake  : git clone https://github.com/ignitionrobotics/ign-cmake -b ign-cmake0
-   Common : git clone https://github.com/ignitionrobotics/ign-common -b ign-common1
-   Fuel Tools  : git clone https://github.com/ignitionrobotics/ign-fuel-tools -b ign-fuel-tools1
-   Math : git clone https://github.com/ignitionrobotics/ign-math -b ign-math4
-   Ignition Msgs : git clone https://github.com/ignitionrobotics/ign-msgs -b ign-msgs1
-   Transport :git clone https://github.com/ignitionrobotics/ign-transport -b ign-transport4
-   Sdformat: git clone https://github.com/osrf/sdformat -b sdf6
-   Gazebo:  git clone https://github.com/osrf/gazebo -b gazebo9
+   - CMake  : ```bash git clone https://github.com/ignitionrobotics/ign-cmake -b ign-cmake0 ```
+   - Common : ```bash git clone https://github.com/ignitionrobotics/ign-common -b ign-common1 ```
+   - Fuel Tools  : ```bash git clone https://github.com/ignitionrobotics/ign-fuel-tools -b ign-fuel-tools1 ```
+   - Math : ```bash git clone https://github.com/ignitionrobotics/ign-math -b ign-math4 ```
+   - Ignition Msgs : ```bash git clone https://github.com/ignitionrobotics/ign-msgs -b ign-msgs1 ```
+   - Transport :```bash git clone https://github.com/ignitionrobotics/ign-transport -b ign-transport4 ```
+   - Sdformat: ```bash git clone https://github.com/osrf/sdformat -b sdf6 ```
+   - Gazebo:  ```bash git clone https://github.com/osrf/gazebo -b gazebo9 ```
 
 
 -  Load compiler: Execute below command (Path can be different for each user)
-
+```bash
 "C:\Program Files\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvarsall.bat" x86_amd64  
-
+```
 
  - Configure and build Ignition CMake. Post this CMake will be installed in gz-ws/ign-cmake/build/install/Release
 
+```bash
 cd ign-cmake
 .\configure
 nmake
 nmake install
-
+```
 
 - Configure and build Ignition Math. Post this Math will be installed gz-ws/ign-math/build/install/Release
-
+```bash
 cd ign-math
 .\configure
 nmake
 nmake install
-
+```
 - Configure and build Ignition Common. Post this Common will be installed gz-ws/ign-common/build/install/Release.
-
+```bash
 cd ign-common
 .\configure
 nmake
 nmake install
-
+```
 - Configure and build Ignition Fuel Tools. Post this Fuel Tools will be installed in gz-ws/ign-fuel-tools/build/install/Release.
-
+```bash
 cd ign-fuel-tools
 .\configure
 nmake
 nmake install
-
+```
 - Configure and build Ignition Msgs. Post this, Ignition Msgs will be installed in gz-ws/ign-msgs/build/install/Release
-
+```bash
 cd ..\..\ign-msgs
 mkdir build
 cd build
 ..\configure
 nmake
 nmake install
-You should now have an installation of 
+```
+
 
 - Configure and build Ignition Transport. Post this, Ignition Transport will be installed in gz-ws/ign-transport/build/install/Release
-
+```bash
 cd ..\..\ign-transport
 mkdir build
 cd build
 ..\configure
 nmake
 nmake install
-
+```
 
 - Configure and build Sdformat. Post this, Sdformat will be installed in gz-ws/sdformat/build/install/Release or gz-ws/sdformat/build/install/Debug.
-
+```bash
 cd ..\..\sdformat
 mkdir build
 cd build
 ..\configure
 nmake
 nmake install
+```
 You should now have an installation of 
 
 - Configure and build Gazebo:
 
+```bash
 cd ..\..\gazebo
 mkdir build
 cd build
@@ -339,10 +332,11 @@ cd build
 nmake gzclient
 nmake gzserver
 nmake install
-
-Installation of Gazebo will be in gz-ws/gazebo/build/install/Release or gz-ws/gazebo/build/install/Debug.
+```
+ - Installation of Gazebo will be in gz-ws/gazebo/build/install/Release or gz-ws/gazebo/build/install/Debug.
 
 -------------------------------------------------------------------------------------------------------------------------------------------- 
+
 Terrain and Levels 
 
 We’ll be making a simple outdoor level that the player can walk through. We’ll be putting various objects that are typical in a video game. We’ll put trees, hills, a campfire, and some music. Basically you’ll go through the things in Unity that are already there. This is so you would know that you don’t need to create source code for these things from scratch anymore. Now go to GameObject > 3D object > Terrain > Create Terrain. You should see a large flat platform appear. This is your terrain
