@@ -1,8 +1,5 @@
-# Basic ROS 2 program to publish real-time streaming
-# video from your built-in webcam
-# Author:
-# - Addison Sears-Collins
-# - https://automaticaddison.com
+#Python program to get send video rover camera.
+# Source code written by Addison Sears-Collins of https://automaticaddison.com
 
 # Import the necessary libraries
 import rclpy # Python Client Library for ROS 2
