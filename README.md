@@ -337,7 +337,7 @@ nmake install
 
 -------------------------------------------------------------------------------------------------------------------------------------------- 
 
-Terrain and Levels 
+#### Terrain and Levels 
 
 We’ll be making a simple outdoor level that the player can walk through. We’ll be putting various objects that are typical in a video game. We’ll put trees, hills, a campfire, and some music. Basically you’ll go through the things in Unity that are already there. This is so you would know that you don’t need to create source code for these things from scratch anymore. Now go to GameObject > 3D object > Terrain > Create Terrain. You should see a large flat platform appear. This is your terrain
 Terrain Tool.
@@ -348,20 +348,19 @@ Go ahead and click the leftmost button. This is the Raise/Lower Terrain tool. No
 
 Feel free to create mountains in any way you want. If you make a mistake, you can undo it with Ctrl + Z. Further down the terrain component, you’ll see a selection of brush shapes. Go ahead and try them.
 
-Adding Texture 
+ - Adding Texture 
 
 Our terrain is looking pretty bare with all that gray color. We’ll make use of an image to give better color to our terrain. Now you’ll see the Project View has a new folder called “Standard Assets”. Inside this are a few files that we’ll be using. Click on the fourth button on the terrain tools. This is the Paint Texture tool. Add the grassy hill texture to the albedo component. Now you’ll see that image used on the terrain.
 
-Adding more texture
+ - Adding more texture
 
 You can add another “texture” the same way. Choose Rock texture this time. Use 50 for the “Tile Size X” and “Tile Size Y” values. Now go ahead and paint on your mountains. You can add as many new “textures” as you want and paint with them.
 
-Installing the Terrain Editor
+ - Installing the Terrain Editor
 
-First, go to Window -> Package Manager and select Unity Registry in the Packages drop-down menu in the upper left corner. Select the settings gear in the top right, then select Advanced Project Settings. Make sure the Enable Preview Packages option is checked.
-Now, in the search box in the upper right corner, enter Terrain Tool. The Install button will appear in the bottom right corner. Press it and wait until the download completes.
-
-Go to Window -> Terrain -> Terrain Toolbox and open it.
+    - Go to Window -> Package Manager and select Unity Registry in the Packages drop-down menu in the upper left corner. Select the settings gear in the top right, then select Advanced Project Settings. Make sure the Enable Preview Packages option is checked.
+    - In the search box in the upper right corner, enter Terrain Tool. The Install button will appear in the bottom right corner. Press it and wait until the download completes.
+    - Go to Window -> Terrain -> Terrain Toolbox and open it.
 
 Basically, it’s a window containing a toolbar with some buttons on the top.Those four buttons are the main Toolbox tabs.
 
@@ -375,17 +374,17 @@ Heightmaps are among the most important and fun tools at your disposal.
 
 Now, go to the Terrain Toolbox. Select the Create New Terrain tab and click the Import Heightmap toggle to activate it.
 
-Terrain Texture:
+ - Terrain Texture:
 
 Do this:
 
-1.	Select the Terrain_1 GameObject.
-2.	Go to the Terrain component.
-3.	Select the Paint Terrain tab.
-4.	In the first dropdown below the row of tabs, select Paint Texture.
-5.	Find the Layers section.
-6.	Click Add Layer.
-7.	Find TextureMountainLayer 1 and select it.
+    - Select the Terrain_1 GameObject.
+    - Go to the Terrain component.
+    - Select the Paint Terrain tab.
+    - In the first dropdown below the row of tabs, select Paint Texture.
+    - Find the Layers section.
+    - Click Add Layer.
+    - Find TextureMountainLayer 1 and select it.
 
 Go to the Terrain Settings tab in the same component and adjust Base Map Distance to maximum.
 
@@ -399,13 +398,11 @@ As a quick introduction, this tab allows you to safely erase terrains. No more l
 
 -------------------------------------------------------------------------------------------------------------------------------------------- 
 
-Rover Wheels 
+#### Rover Wheels 
 
 Documentation of Wheels:
 
-
 -	In the project, we will be creating 2-wheeled rover just like Gopigo3 with collider that will make the rover more realistic in terms of physical collisions with objects.
-
 
 Creating planes for placing rover:
 
@@ -437,26 +434,30 @@ Implementing the wheels collider for rover:
 -	To add the script for wheel collider, under rover click add component-> New script. 
 -	Now we can create a class and the properties of the class like the following way:
 
+```bash
 public class WheelInfo
 {
 	public WheelCollider wheelcollider;
 	public Transform visualwheel;
 }
-
+```
 -	To change the steering angle of the wheel, we can use the steerAngle property. i.e.,
 
+```bash
 public WheelInfo wheel1; //creating variable wheel1 of class wheelInfo
 
 wheel1.wheelcollider.steerAngle = a * b; //a and b can be any variables  	
-
+```
 -	Similar to steerAngle, to change the motor torque and torque of brake, motorTorque and brakeTorque properties are used respectively.
+```bash
 i.e., wheel1.wheelcollider.motorTorque and wheel1.wheelcollider.brakeTorque
- 
+``` 
 -	To find the whether the child with given name is present under gameobject, GetChild method is used. 
 
+```bash
 For example, 
 		gameobject.transform.getChild(index).name
-
+```
 
 Creating wheels component for rover:
 
@@ -466,113 +467,100 @@ Creating wheels component for rover:
 i.e., (1,0,1). And the wheels will be shown in the model.
 
 
-References:
+#### References
 
-i)	https://www.diva-portal.org/smash/get/diva2:1334348/FULLTEXT01.pdf
+- https://www.diva-portal.org/smash/get/diva2:1334348/FULLTEXT01.pdf
 
-ii)	https://docs.unity3d.com/Manual/WheelColliderTutorial.html
+- https://docs.unity3d.com/Manual/WheelColliderTutorial.html
 
-iii)	https://www.theconstructsim.com/ros-projects-exploring-ros-using-2-wheeled-robot-part-1/
+- https://www.theconstructsim.com/ros-projects-exploring-ros-using-2-wheeled-robot-part-1/
 
 -------------------------------------------------------------------------------------------------------------------------------------------- 
  
- Maze
-
- Documentation for maze:
-
+ #### Maze
 
 A maze is a collection or areas linked together such that you can start anywhere and from there be able visit every other area. The shape and layout of these areas and how exactly they are connected defines the character of the maze.
 
-For Maze:
--There are several ways of designing maze in unity.
-Basic :
--For creating maze, we need to first create a plane.
--After creating plane, we need to first put walls.
--A wall is a 3D object, so add cube and gives it a shape of wall by adjusting its coordinates.
--Similarly create other duplicate walls and decide their sizes. After this put each wall adjacently in a way that they form a maze-like structure.
-Reference: https://www.youtube.com/watch?v=L8sfSBLBRGY
-		https://catlikecoding.com/unity/tutorials/maze/
+There are several ways of designing maze in unity.
+- Basic :
+  - For creating maze, we need to first create a plane.
+  - After creating plane, we need to first put walls.
+  - A wall is a 3D object, so add cube and gives it a shape of wall by adjusting its coordinates.
+  - Similarly create other duplicate walls and decide their sizes. After this put each wall adjacently in a way that they form a maze-like structure.
+  - [Reference](https://www.youtube.com/watch?v=L8sfSBLBRGY).
+  - [Reference](https://catlikecoding.com/unity/tutorials/maze/).
 
-Using Algorithm:
+ - Using Algorithm:
+
 The other way of creating a maze is using a maze generation algorithm. Recursive Backtracking is one such algorithm.
 Here’s the mile-high view of recursive backtracking:
-1.	Choose a starting point in the field.
-2.	Randomly choose a wall at that point and carve a passage through to the adjacent cell, but only if the adjacent cell has not been visited yet. This becomes the new current cell.
-3.	If all adjacent cells have been visited, back up to the last cell that has uncarved walls and repeat.
-4.	The algorithm ends when the process has backed all the way up to the starting point.
 
-Reference : http://weblog.jamisbuck.org/2010/12/27/maze-generation-recursive-backtracking
+  - Choose a starting point in the field.
+  - Randomly choose a wall at that point and carve a passage through to the adjacent cell, but only if the adjacent cell has not been visited yet. This becomes the new current cell.
+  - If all adjacent cells have been visited, back up to the last cell that has uncarved walls and repeat.
+  - The algorithm ends when the process has backed all the way up to the starting point.
+  - [Reference](http://weblog.jamisbuck.org/2010/12/27/maze-generation-recursive-backtracking).
 
--Another method for creating maze uses unity terrain tool.
-Reference: https://www.youtube.com/watch?v=S8XVGMDZM8U 
+Another method for creating maze uses unity terrain tool.
+[Reference](https://www.youtube.com/watch?v=S8XVGMDZM8U). 
 
 However, the most relevant method for designing maze in our project is the basic one mentioned above.
 
 -------------------------------------------------------------------------------------------------------
-------------------------------------------------------------------
 
-Rover Structure Creation and Movement:
+#### Rover Structure Creation and Movement:
 
-C# Scripts:
+- C# Scripts:
 The behavior of GameObjects is controlled by the Components that are attached to them. Although Unity’s built-in Components can be very versatile, you will soon find you need to go beyond what they can provide to implement your own gameplay features. Unity allows you to create your own Components using scripts. These allow you to trigger game events, modify Component properties over time and respond to user input in any way you like.
 
 Unity supports the C# programming language natively. C# (pronounced C-sharp) is an industry-standard language similar to Java or C++.
 
 In addition to this, many other .NET languages can be used with Unity if they can compile a compatible DLL
 
-Creating Script:
+- Creating Script:
 Unlike most other assets, scripts are usually created within Unity directly. You can create a new script from the Create menu at the top left of the Project panel or by selecting Assets > Create > C# Script from the main menu.
 
 The new script will be created in whichever folder you have selected in the Project panel. The new script file’s name will be selected, prompting you to enter a new name.
 
-Box Collider:
+- Box Collider:
 The Box Collider is a basic cuboid-shaped collision primitive.
 
-Property:Function
+- Property:Function
 Is Trigger: If enabled,this Collider is used for triggering events, and is ignored by the physics engine
 Material: Reference to the Physics Material that determines how this Collider interacts with others.
 Center: The position of the Collider in the object’s local space.
 Size: The size of the Collider in the X, Y, Z directions.
 
-Details:
+- Details:
 Box Colliders are rectangular cuboids and are useful for items such as crates or chests. However, you can use a thin box as a floor, wall or ramp. The Box Collider is also a useful element in a Compound Collider.
 
 To edit the box’s shape, press the Edit Collider button in the Inspector,To exit the Collider Edit Mode press the Edit Collider button again. A vertex appears in the center of each face of the Box Collider in Edit Mode. To move the vertices, drag them when the mouse is over the vertex to make the Box Collider bigger and smaller.
 
-Wheel Colider:
+- Wheel Colider:
 The Wheel Collider is a special collider for grounded vehicles. It has built-in collision,detection, wheel physics, and a slip-based tire friction model. It can be used for objects other than wheels, but it is specifically designed for vehicles with wheels.
 
 
-Rover Structure Creation and Movement:
+- Rover Structure Creation and Movement:
 
-This are the steps:
-
-[1] - Create a new Project
-
-[2] - Add a terrain
-
-[3] - Import some Assets
+   - Create a new Project
+   - Add a terrain
+   - Import some Assets
 The assets to import are the environment elements and the SmoothFollow script.
-
-[4] - Model the terrain
+   - Model the terrain
 Now lets model the terrain creating some mountains, applying textures, like grass and drawing the path.
-
-[5] - Add a empty game object
+   - Add a empty game object
 This gameObject will be used as a container for the rover.
-
-[6] - Add a cube.
+   - Add a cube.
 Add a cube to the rover gameObject. Change the position of the cube for 0,0,0.
 Change the position of the gameObject rover so it stands inside the terrain.
 If you like you can add other cubes so the rover looks better. Add the cubes always as a child of the gameObject rover.
 Remover the cubes box colliders and add a rigidbody and a box collider to the gameObject rover.
 Change the box collider size so it matches the body of the rover.
-
-[7] - Add a cylinder
+   - Add a cylinder
 The cylinder will be used to make the wheels. First we build one then its just copy and paste.
 Positioned the cylinder near the body of the rover, change the size and rotate it.
 It should look something like this.
-
-[8] - Remove the collider and add a wheelcollider
+   - Remove the collider and add a wheelcollider
 Now that the wheel is in place remove the capsule collider and add a wheelcollider.
 This component is responsible for the calculations that will make the rover physics seam real.
 Last, but not least, make the wheel a child of the rover.
@@ -580,14 +568,12 @@ If you test the rover, executing the scene, it will jump and the camera won't sh
 First the camera, add the smoothfollow to it and define the target to be the rover. The distance should be 2.
 As for the rover it should have a mass of 1000, change it in the rigidbody.
 There it is. Just one wheel though.
-
-[9] - Copy and paste the Wheel
+   - Copy and paste the Wheel
 At this point we should copy and past this wheel and position each in the corners of the rover.
 Each wheel should have a name according to the position.
 To make it possible to see the wheels spin we will add a material that looks like a rim.
 Next make a material with the texture and add the material to each wheel. It ain't pretty but its effective.
-
-[10] - Add a new C# script
+   - Add a new C# script
 This script will control the behavior of the rover.
 This script should define an array for the wheels, the power of the motor and the max rotation angle of the side wheels.
 Drag the script to the rover gameObject and then drag each wheel to the array.
@@ -599,45 +585,41 @@ In the end let's add the brakes and the engine.
 
 
 -------------------------------------------------------------------------------------------------------
-------------------------------------------------------------------
 
+#### Testing Of Wheels:
 
-Testing Of Wheels:
+- Testing of the wheels implemented in Unity 3D, task(#136) under US #107.
+- Imported the work done by Krishna of wheels in my device and ran the project in Unity 3D.
 
--I have done testing of the wheels implemented in Unity 3D by Krishna, which was one of my task(#136) under US #107.
-- I first imported the work done by Krishna of wheels in my device and ran the project in Unity 3D.
+- Below are the findings:
 
--I ran the project and I pointed out the following things:
--> Friction is less. Wheels are moving by its own when it is at some elevation or suddenly is stopped. This need to be improved.
-->Sudden stop is not working well. It needs to be optimized and the wheels should stop properly when it is required to do suddenly.
--> Rover is moving by its own when it is on slope of terrain. So that need to be balanced by setting the friction property properly.
--> The Jump feature can be added to the wheels. This feature is not currently added but this might be helpful to tackle obstacles. It can be adjusted in future as per the need when the wheels are integrated with the original rover body.
-->Wheel colliders are working perfectly. The sample body implemented here is moving perfectly with the support of wheels.
--> Body controlling through keyboard inputs is going smoothly. Wheels are moving without any failure and as per the requirement.
-->Rover is running well on terrain fields. The terrain made here is just sample to demonstrate the rover movement and the wheels are working well on it without any issues. 
--> One important thing is that the wheels need to be connected with the chassis when it is integrated with the rover body. Here a gap can be seen between wheels and rover body but it is ok for now as this is just demonstration of working of wheels which is implemented correctly.
--> Currently the wheels are moving according to the inputs given from the keyboard. This have to be made autonomous when integrated with the original body. 
--> The controlling of the wheels needs to be improved.
+  - Friction is less. Wheels are moving by its own when it is at some elevation or suddenly is stopped. This need to be improved.
+  - Sudden stop is not working well. It needs to be optimized and the wheels should stop properly when it is required to do suddenly.
+  - Rover is moving by its own when it is on slope of terrain. So that need to be balanced by setting the friction property properly.
+  - The Jump feature can be added to the wheels. This feature is not currently added but this might be helpful to tackle obstacles. It can be adjusted in future as per the need when the wheels are integrated with the original rover body.
+  - Wheel colliders are working perfectly. The sample body implemented here is moving perfectly with the support of wheels.
+  - Body controlling through keyboard inputs is going smoothly. Wheels are moving without any failure and as per the requirement.
+  - Rover is running well on terrain fields. The terrain made here is just sample to demonstrate the rover movement and the wheels are working well on it without any issues. 
+  - One important thing is that the wheels need to be connected with the chassis when it is integrated with the rover body. Here a gap can be seen between wheels and rover body but it is ok for now as this is just demonstration of working of wheels which is implemented correctly.
+  - Currently the wheels are moving according to the inputs given from the keyboard. This have to be made autonomous when integrated with the original body. 
+  - The controlling of the wheels needs to be improved.
 
-  Conclusively, the wheels are working well as of now with improvements required in the setting the friction property. And the jump feature needs to be added in the wheels.
-
-Things accomplished after testing:
+Post testing:
 
 In the testing of wheels, as a part of my task I have mentioned the things that has to be done. Some of the things that are required features in the project need to be implemented.
 Some examples of the tasks which need to be done are:
--Adjusting the friction properly.
--Adding the jump feature to the wheels.
--Chassis for wheels has to be implemented.
--Controlling of wheels need to be improved.
+- Adjusting the friction properly.
+- Adding the jump feature to the wheels.
+- Chassis for wheels has to be implemented.
+- Controlling of wheels need to be improved.
+
 These requirements are now fulfilled, and the work has been finished.
 The work done regarding these tasks is stated below:
-->The Jump feature is now added for the wheels. A new task namely Implementation of jump in wheels was done. I implemented jump by creating a new project in unity and creating a dummy object. This object was assigned as a rigid body and was enabled with the jump. Some obstacles were also created and the object was able to do jump over them. This feature then to be integrated with the wheels. It might be needed that this feature to be modified for the final integration of various components and can be updated accordingly.
 
--> The next feature is the friction of wheels. Friction has to be adjusted so that the wheels do not slide on sudden stoppage. Earlier when wheels were stopped all of a sudden, they used to move some distance before stopping completely. But now this property is been perfectly modified and now the rover wheels stops as required.
+- The Jump feature is now added for the wheels. A new task namely Implementation of jump in wheels was done. I implemented jump by creating a new project in unity and creating a dummy object. This object was assigned as a rigid body and was enabled with the jump. Some obstacles were also created and the object was able to do jump over them. This feature then to be integrated with the wheels. It might be needed that this feature to be modified for the final integration of various components and can be updated accordingly.
+- The next feature is the friction of wheels. Friction has to be adjusted so that the wheels do not slide on sudden stoppage. Earlier when wheels were stopped all of a sudden, they used to move some distance before stopping completely. But now this property is been perfectly modified and now the rover wheels stops as required.
+- Chassis is an important feature which has to implement so that the rover wheels can be connected with the body without showing any gap. Earlier some gap was there between wheels and body and to eliminate this gap and for proper connection, chassis has to be implemented. Chassis are now implemented by Krishna and now properly installed. The code regarding this is also pushed using a commit on github.
+- The controlling of the wheels is now improved considerably. Adjusting some properties like its friction, suspension and mass(according to gravity) has helped in improving it.
+- Making rover wheels move without keyboard inputs will be done in later sprints.
 
-->Chassis is an important feature which has to implement so that the rover wheels can be connected with the body without showing any gap. Earlier some gap was there between wheels and body and to eliminate this gap and for proper connection, chassis has to be implemented. Chassis are now implemented by Krishna and now properly installed. The code regarding this is also pushed using a commit on github.
-
-->The controlling of the wheels is now improved considerably. Adjusting some properties like its friction, suspension and mass(according to gravity) has helped in improving it.
-
--> Making rover wheels move without keyboard inputs will be done in later sprints.
-
+-------------------------------------------------------------------------------------------------------------------- 
