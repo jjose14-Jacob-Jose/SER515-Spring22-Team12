@@ -27,9 +27,9 @@ This repository will have all the artifacts for SER 515 - Group 12, Simulation R
 * Clone the repo git clone -b master https://github.com/ksharm53/SER515-Spring22-Team12.git
 
 
-
-
-#### Authors
+--------------------------------------------------------------------------------------------------------------------------------------------
+Authors
+--------------------------------------------------------------------------------------------------------------------------------------------
 
 - Jacob Jose
 - Kanav Sharma
@@ -38,128 +38,120 @@ This repository will have all the artifacts for SER 515 - Group 12, Simulation R
 - Krishna Pandya
 - Jay Patel
 
-
 --------------------------------------------------------------------------------------------------------------------------------------------
 Installation
 --------------------------------------------------------------------------------------------------------------------------------------------
--Chocolatey
+#### Install Chocolatey
 
-Install Chocolatey
+[Reference URL](https://chocolatey.org/install)
 
-Follow steps from the following link: https://chocolatey.org/install
+ - Ensure that you are using an administrative shell - you can also install as a non-admin, check out Non-Administrative Installation.
+ - Install with powershell.exe
+ - Run Get-ExecutionPolicy. If it returns Restricted, then run Set-ExecutionPolicy AllSigned or Set-ExecutionPolicy Bypass -Scope Process.
+#### Run the following command:
 
-First, ensure that you are using an administrative shell - you can also install as a non-admin, check out Non-Administrative Installation.
-Install with powershell.exe
-
-
-Run Get-ExecutionPolicy. If it returns Restricted, then run Set-ExecutionPolicy AllSigned or Set-ExecutionPolicy Bypass -Scope Process.
-Now run the following command:
-
+```bash
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+```
 
-Paste the copied text into your shell and press Enter.
+ - Paste the copied text into your shell and press Enter.
 
-Wait a few seconds for the command to complete.
+ - Wait a few seconds for the command to complete.
 
-If you don't see any errors, you are ready to use Chocolatey! Type choco or choco -? now, or see Getting Started for usage instructions.
+ - If you don't see any errors, you are ready to use Chocolatey! Type choco or choco to check version.
 
---------------------------------------------------------------------------------------------------------------------------------------------
--Python
 
-Open a Command Prompt and type the following to install Python via Chocolatey:
-Check whether there are any versions other than 3.8.3 
-if they are present 
-uninstall python via System control panel
+ --------------------------------------------------------------------------------------------------------------------------------------------
+#### Python
 
+ - Open a Command Prompt and type the following to install Python via Chocolatey:
+ - Check whether there are any versions other than 3.8.3 
+ - If yes, uninstall python via System control panel.
+
+```bash
 choco install -y python --version 3.8.3
+```
 
-ROS 2 expects the python installation to be available in directory  C:\python38. Double check that it is installed there.
+ - ROS 2 expects the python installation to be available in directory  C:\python38. Double check that it is installed there.
 
 --------------------------------------------------------------------------------------------------------------------------------------------
--Visual C++ Redistributables
+#### Visual C++ Redistributables
 
-Open a Command Prompt and type the following to install them via Chocolatey:
+ - Open a Command Prompt and type the following to install them via Chocolatey:
 
+```bash
 choco install -y vcredist2013 vcredist140
+```
+
 --------------------------------------------------------------------------------------------------------------------------------------------
-- Install OpenSSL
+#### Install OpenSSL
 
-Download the Win64 OpenSSL v1.1.1L OpenSSL installer from ( https://slproweb.com/products/Win32OpenSSL.html ). 
-Scroll to the bottom of the page and download Win64 OpenSSL v1.1.1L. Don’t download the Win32 or Light versions.
-
-Run the installer with default parameters, as the following commands assume you used the default installation directory.
-
-This command sets an environment variable that persists over sessions:
-
+ - Download the Win64 OpenSSL v1.1.1L OpenSSL installer [link]( https://slproweb.com/products/Win32OpenSSL.html ). 
+ - Scroll to the bottom of the page and download Win64 OpenSSL v1.1.1L. Don’t download the Win32 or Light versions.
+ - Run the installer with default parameters, as the following commands assume you used the default installation directory.
+- This command sets an environment variable that persists over sessions:
+```bash
 < setx -m OPENSSL_CONF "C:\Program Files\OpenSSL-Win64\bin\openssl.cfg" >
+```
 
-You will also need to append the OpenSSL-Win64 bin folder to your PATH. 
-You can do this by clicking the Windows icon, typing “Environment Variables”, then clicking on “Edit the system environment variables”. 
-In the resulting dialog, click “Environment Variables”, then click “Path” on the bottom pane, finally click “Edit” and add the path below.
+ - You will also need to append the OpenSSL-Win64 bin folder to your PATH. 
+ - You can do this by clicking the Windows icon, typing “Environment Variables”, then clicking on “Edit the system environment variables”. 
+ - In the resulting dialog, click “Environment Variables”, then click “Path” on the bottom pane, finally click “Edit” and add the path below.
 
+```bash
 < C:\Program Files\OpenSSL-Win64\bin\ >
-
+```
 -------------------------------------------------------------------------------------------------------------------------------------------- 
 
-- Install Visual Studio
+#### Install Visual Studio
 
-Install Visual Studio 2021.
 
-If you already have a paid version of Visual Studio 2021 (Professional, Enterprise), skip this step.
-
-Microsoft provides a free of charge version of Visual Studio 2021, named Community, which can be used to build applications that use ROS 2. 
-You can download the installer directly through this link. ( https://code.visualstudio.com/updates/v1_64 )
-
-Make sure that the Visual C++ features are installed.
-
-An easy way to make sure they’re installed is to select the Desktop development with C++ workflow during the install. 
-
-Make sure that no C++ CMake tools are installed by unselecting them in the list of components to be installed.   
+ - If you already have a paid version of Visual Studio 2021 (Professional, Enterprise), skip this step.
+ - Microsoft provides a free of charge version of Visual Studio 2021, named Community, which can be used to build applications that use ROS 2. 
+ - You can download the installer directly through this [link]( https://code.visualstudio.com/updates/v1_64 )
+ - Make sure that the Visual C++ features are installed.
+ - An easy way to make sure they’re installed is to select the Desktop development with C++ workflow during the install. 
+ - Make sure that no C++ CMake tools are installed by unselecting them in the list of components to be installed.   
 ------------------------------------------------------------------------------------------------------------------------------------------- 
-- Install OpenCV:
+
+#### Install OpenCV:
 
 Some of the examples require OpenCV to be installed.
 
-You can download a precompiled version of OpenCV 3.4.6 from https://github.com/ros2/ros2/releases/download/opencv-archives/opencv-3.4.6-vc16.VS2019.zip .
-
-Assuming you unpacked it to C:\opencv, type the following on a Command Prompt (requires Admin privileges):
-
-setx -m OpenCV_DIR C:\opencv
-
-Since you are using a precompiled ROS version, we have to tell it where to find the OpenCV libraries. You have to extend the PATH variable to C:\opencv\x64\vc16\bin.
-
+ - You can download a precompiled version of OpenCV 3.4.6 from [link](https://github.com/ros2/ros2/releases/download/opencv-archives/opencv-3.4.6-vc16.VS2019.zip).
+ - Assuming you unpacked it to C:\opencv, type the following on a Command Prompt (requires Admin privileges):
+ - setx -m OpenCV_DIR C:\opencv
+ - Since you are using a precompiled ROS version, we have to tell it where to find the OpenCV libraries. You have to extend the PATH variable to C:\opencv\x64\vc16\bin.
 
 
 --------------------------------------------------------------------------------------------------------------------------------------------
--Install Dependencies
+ #### Install Dependencies
 
 You will need to append the CMake bin folder C:\Program Files\CMake\bin to your PATH.
 
 Please download these packages from this GitHub repository.
 
-asio.1.12.1.nupkg
-
-bullet.2.89.0.nupkg
-
-cunit.2.1.3.nupkg
-
-eigen-3.3.4.nupkg
-
-tinyxml-usestl.2.6.2.nupkg
-
-tinyxml2.6.0.0.nupkg
-
-log4cxx.0.10.0.nupkg
+ - asio.1.12.1.nupkg
+ - bullet.2.89.0.nupkg
+ - cunit.2.1.3.nupkg
+ - eigen-3.3.4.nupkg
+ - tinyxml-usestl.2.6.2.nupkg
+ - tinyxml2.6.0.0.nupkg
+ - log4cxx.0.10.0.nupkg
 
 Once these packages are downloaded, open an administrative shell and execute the following command:
-
+```bash
 choco install -y -s <PATH\TO\DOWNLOADS> asio cunit eigen tinyxml-usestl tinyxml2 log4cxx bullet
-Please replace <PATH\TO\DOWNLOADS> with the folder you downloaded the packages to.
+````
+ - Please replace <PATH\TO\DOWNLOADS> with the folder you downloaded the packages to.
 
 You must also install some python dependencies for command-line tools:
-
+```bash
 python -m pip install -U catkin_pkg cryptography empy ifcfg lark-parser lxml netifaces numpy opencv-python pyparsi
+````
 -------------------------------------------------------------------------------------------------------------------------------------------- 
+
+
 - Install Qt5:
 
 This section is only required if you are building rviz.
