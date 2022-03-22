@@ -10,7 +10,7 @@ import com.Yatri.ColorCodes;
 
 import jline.console.ConsoleReader;
 
-public class View {
+public abstract class View {
 
 	static ConsoleReader reader;
 	static List<String> promptViews;
@@ -34,9 +34,9 @@ public class View {
 	}
 
 	public void getView() {
-		
+
 		setPrompt();
-		
+
 		try {
 			String line;
 			while ((line = reader.readLine()) != null) {
@@ -45,20 +45,17 @@ public class View {
 				if (line.isEmpty()) {
 					continue;
 				}
-
-				System.out.println("Line is :"+ line);
-				log.info("Line is :"+ line);
-				//String words[] = line.split("\\s+");
-
-				//if (!executeCommand(words)) {
-				//	System.out.println("invalid command!");
-				//}
+				if (!executeCommand(line)) {
+					log.info("invalid command!");
+				}
 			}
 		} catch (IOException e) {
 			log.error("Exception while fetching view"+ e.getMessage());
 		}
 	}
-	
+
+	abstract boolean executeCommand(String words) throws IOException;
+
 	static void setPrompt() {
 		StringBuilder prompt = new StringBuilder();
 
