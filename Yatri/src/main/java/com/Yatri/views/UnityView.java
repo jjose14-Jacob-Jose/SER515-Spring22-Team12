@@ -25,7 +25,6 @@ public class UnityView extends View {
 			log.info("Starting downloading Unity");
 
 			FileUtils.copyURLToFile(url, new File("UnityHubSetup.exe"));
-			System.out.println("Khatam hua");
 		}
 		return true;
 	}
