@@ -1,7 +1,17 @@
 ::setlocal EnableDelayedExpansion
+@echo off
+setlocal ENABLEDELAYEDEXPANSION
+set vidx=0
+for /F "tokens=2 delims==" %%A in (Release_to_Public-Config.txt) do (
+    SET /A vidx=!vidx! + 1
+    set var!vidx!=%%A
+)
+set var
+echo "Value of var 1 is "
+echo %var1%
 echo "Uploading Assets to GitHub"
 
-set url_of_git_repo_containing_assets_repo_URL="https://github.com/jjose14-Jacob-Jose/ser515-project-sprint4"
+set url_of_git_repo_containing_assets_repo_URL=%var1%
 
 git.exe init
 git.exe add *

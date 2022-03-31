@@ -1,4 +1,13 @@
 ::setlocal EnableDelayedExpansion
+setlocal ENABLEDELAYEDEXPANSION
+set vidx=0
+for /F "tokens=*" %%A in (Update_Configuration.txt) do (
+    SET /A vidx=!vidx! + 1
+    set var!vidx!=%%A
+)
+set var
+echo "***********************************************************
+echo %var1%
 echo "Downloading Unity3D Assets"
 
 set folderName_Unity3D_Asserts="Unity3d_Assets_1"

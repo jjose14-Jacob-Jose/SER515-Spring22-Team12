@@ -1,0 +1,2 @@
+PublicGitHubURL="https://github.com/jjose14-Jacob-Jose/ser515-project-sprint4"
+NameOfFolderContainingItemsToBeReleased=Release_Items
