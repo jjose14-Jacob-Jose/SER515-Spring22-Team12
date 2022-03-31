@@ -16,7 +16,7 @@ if exist %folderName_Unity3D_Asserts% (
 git.exe clone %url_of_git_repo_containing_assets_repo_URL%
 echo "Finished downloading"
 ren %url_of_git_repo_containing_assets_repo_name% %folderName_Unity3D_Asserts%
-cd folderName_Unity3D_Asserts
+cd %folderName_Unity3D_Asserts%
 echo %CD%
 RMDIR /s /q ".git"
 
