@@ -622,7 +622,7 @@ The work done regarding these tasks is stated below:
 - The controlling of the wheels is now improved considerably. Adjusting some properties like its friction, suspension and mass(according to gravity) has helped in improving it.
 - Making rover wheels move without keyboard inputs will be done in later sprints.
 
--------------------------------------------------------------------------------------------------------------------- 
+
 --------------------------------------------------------------------------------------------------------------------
 
 #### Warehousing and Visualizations:
@@ -666,7 +666,6 @@ In the Topic field, enter /scan.
 You can also modify the Point Radius to change the size of each drawn point.
 
 --------------------------------------------------------------------------------------------------------------------
---------------------------------------------------------------------------------------------------------------------
 
 ### Set up the Environment:
 
@@ -707,3 +706,34 @@ With the SimpleWareHouseScene open, simply press the Play button at the top of t
 If the ROS2 nodes were already launched, you should see flashing, non-red arrows in the top-left HUD to indicate Unity is communicating with ROS.
 
 --------------------------------------------------------------------------------------------------------------------
+
+### Executing Command Line Interface
+
+This Section is to execute Jar file to access ROS environment through CLI.
+
+ - Download JAR file.
+ - Execute below command
+
+```bash
+java -jar Yatri-0.0.1-SNAPSHOT.jar
+```
+
+ - Execute below to download LTS Unity and visual studio required for Rover development.
+
+```bash
+ Download Unity
+```
+This results in: 
+```bash
+28852 [main] INFO com.Yatri.views.UnityView  - Starting downloading Unity
+~$
+```
+ - Below are other CLI commands to be implemented
+
+ ```bash
+ - Environment Configuration
+ - Simulation Setup
+ - exit
+ - help
+```
+
