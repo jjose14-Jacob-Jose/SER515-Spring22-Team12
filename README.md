@@ -666,3 +666,44 @@ In the Topic field, enter /scan.
 You can also modify the Point Radius to change the size of each drawn point.
 
 --------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------
+
+### Set up the Environment:
+
+Configuring the ROS settings:
+Use the Robotics drop-down menu to open the ROS Settings menu.
+
+In the ROS Settings panel:
+
+1)Ensure the Connect on Startup checkbox is checked
+2)Ensure Protocol is set to ROS2
+3)For those using a Docker container on the same machine as per our guidance from the setup instructions, leave your ROS IP Address as the default: 127.0.0.1.
+Otherwise, set your ROS IP Address to the address of the adapter your ROS2 environment is using.
+4)Ensure the Show HUD is checked. This is to ensure you get visual feedback on the state of your ROS connection during runtime.
+
+Starting RViz in docker container:
+
+In a terminal on your host OS, run the following:
+
+  docker run -it --rm -p 6080:80 -p 10000:10000 --shm-size=1024m unity-robotics:nav2-slam-example
+
+In a web browser connect to http://127.0.0.1:6080 and follow the steps below:
+
+1)Click on the bottom left system menu and select System Tools > LXTerminal
+2)In the Terminal run:
+ros2 launch unity_project example.py
+You may also see the following message being spammed in the console:
+[controller_server-4] [INFO] [1626978106.918019100] [local_costmap.local_costmap]: Timed out waiting for transform from base_link to odom to become available, tf error: Invalid frame ID "base_link" passed to canTransform argument source_frame - frame does not exist
+
+Launching ROS2 components manually
+
+If you are managing your own ROS2 environment, you can launch the example manually by using:
+ros2 launch unity_slam unity_slam.py
+If this doesn't work, you may need to first colcon build the workspace or source install/local_setup.bash to properly populate your ROS2 paths.
+
+Starting Unity Simulation:
+With the SimpleWareHouseScene open, simply press the Play button at the top of the Editor.
+
+If the ROS2 nodes were already launched, you should see flashing, non-red arrows in the top-left HUD to indicate Unity is communicating with ROS.
+
+--------------------------------------------------------------------------------------------------------------------
