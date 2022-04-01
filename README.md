@@ -623,3 +623,46 @@ The work done regarding these tasks is stated below:
 - Making rover wheels move without keyboard inputs will be done in later sprints.
 
 -------------------------------------------------------------------------------------------------------------------- 
+--------------------------------------------------------------------------------------------------------------------
+
+#### Warehousing and Visualizations:
+
+
+Adding Visualizations
+
+The Visualizations Package contains a DefaultVisualizationSuite prefab that provides visualizer components for many common ROS message types, organized in the hierarchy by package. These components control how messages are displayed in the Unity scene.
+
+1)If Unity is still in Play mode, exit Play mode.
+2)To add the default visualization suite, in the Project window, expand and select Packages/Robotics Visualization. Select the DefaultVisualizationSuite (indicated by the blue cube Prefab icon) and drag it into your scene Hierarchy.
+
+Goal Pose Visualization
+If your previous navigation ROS nodes are still running, shut them down. Instead, run the visualization-focused launch file provided:
+ros2 launch unity_slam_example unity_viz_example.py
+In Unity, enter Play mode. Select the Topics tab in the HUD.
+Click into the search bar, and begin typing /goal_pose. When it appears, select the /goal_pose topic name to toggle both the 2D and 3D options. Alternatively, you can select each individual toggle. 2D toggles a GUI window that displays a text-formatted version of the message. 3D toggles the 3D drawing.
+You should now see a new window labeled with the /goal_pose topic in your Game view, saying "Waiting for message..."
+You can click and drag the edges of the UI to adjust the size and placement of the topic's window.
+Open a new terminal in your ROS workspace and begin publishing goal poses,
+e.g.:
+ros2 topic pub -1 /goal_pose geometry_msgs/PoseStamped "{header: {stamp: {sec: 0}, frame_id: 'map'}, pose: {position: {x: 0.0, y: -4.0, z: 0.0}, orientation: {w: 1.0}}}"
+
+Map Visualization
+Next, we'll visualize the map being made.
+In Unity, select the Topics tab in the HUD to open the list again. Type /map in the search bar, then select the 3D toggle next to the /map topic name to toggle on the 3D drawing.
+The map should now be appearing in the scene as the /map topic receives updates from ROS!
+
+Add Global Costmap Visualization
+
+Laser Scan Visualization
+
+Finally, let's visit how the laser scan sensor is being visualized in the scene. Using the Visualizations Package, point cloud-type visualizations are highly customizable. This section will walk through customization options for a sensor_msgs/LaserScan visualization for your Nav2 project.
+1)If you are still in Play mode, exit it.
+2)In the scene Hierarchy, once again expand the DefaultVisualizationSuite. This time, expand the sensor_msgs object and select LaserScan to open its Inspector.
+
+In the Topic field, enter /scan.
+3)For messages with stamped headers, we need to specify how we want the visualizations to be drawn with respect to the TF tree. This is done via the TF Tracking Settings; click it to expand the options.
+4)Enter Play mode. Open the HUD's Topics tab again, and click 3D toggle for /scan. The laser scan message should now be drawing and updating!
+5)In the Inspector, select the dropdown for Color Mode. These settings select what value corresponds to the point's colors--distance from the sensor, intensity of the reading, or angle of the reading. Change the value between Distance and Angle and see how the point colors change.
+You can also modify the Point Radius to change the size of each drawn point.
+
+--------------------------------------------------------------------------------------------------------------------
