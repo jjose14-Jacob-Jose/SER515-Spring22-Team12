@@ -737,3 +737,42 @@ This results in:
  - help
 ```
 
+-------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------
+# # #GItHub Cleanup work:
+
+GitHub Cleanup:
+
+I was working on GitHub cleanup. There were some folders and files that needs to be cleaned for the proper functioning of the system.
+-Initially sorted all the files according to the person who have added them. This helps in checking how  the file added by that team member will contribute in the functionality.
+-After this, the files were selected which needs to be cleaned. There were some redundant files and some files which were not contributing significantly. So cleaned up those files and their corresponding folders.
+-Some of the files were placed in different folders which needs to be placed at the right place so that their contribution can be obtained. These files were listed and placed in the perfect location.
+-Asset is the folder which needed more cleaning. There were many separate folders in it like:
+-CameraRover
+
+-JumpMaterials
+
+-Materials
+
+-MaterialsMaze
+
+-MaterialsRover
+
+-Materials_integration_wheels
+
+Now there were different types of files in these folders which were separated and combined into separate folders.
+
+-All the scenes files were combined and put together in the scenes Folder.
+-Some C# files, asset files and meta files were placed outside the folders, in common, as per the standard format.
+-Whereas the folders of Prefabs, SampleScenes and Standard Assets were containing files which need not to be modified.
+-Apart from this, Scenes folder, present outside along with other folders, was cleaned as it was having some scenes which were not contributing much.  
+
+The other folders, including Design Docs, Library, Logs, Packages, ProjectSettings, Yatri and others were containing files which were sorted. Some adjustments were made and these folders were good.
+
+-Some instance include the Design Docs folder which contains the pdf files which describes ROS simulation Wireframe Designs. These are the files contain generic data for representing the specific thing, hence they did not altered much.
+-ProjectSettings and UserSettings folders contains the assets files which were sorted.
+-Yatri is the  name of the project rover and the java source files were put in this folder.
+-The Scripts folder contains the scripts that were used. It contains script especially for LIDAR sensors.
+-The Library folder contains the files like PREFS, ASSET, JSON Source file, CATALOG file, some text files and some folders which were put altogether after cleaning.
+-Also the Packages folder contains just the JSON source files. No other types were placec in this particular folder.
+
