@@ -1,2 +1,2 @@
-PublicGitHubURL="https://github.com/jjose14-Jacob-Jose/ser515-project-sprint4"
-NameOfFolderContainingItemsToBeReleased=Release_Items
+Public GitHub URL="https://github.com/jjose14-Jacob-Jose/ser515-project-sprint4"
+Name Of Folder Containing Items To Be Released=Release_Items
