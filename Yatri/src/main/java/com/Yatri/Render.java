@@ -39,6 +39,8 @@ public class Render {
 				log.info("Starting downloading Unity");
 
 				FileUtils.copyURLToFile(url, new File("UnityHubSetup.exe"));
+				
+				log.info("Download complete. Please go to SER515-Spring22-Team12\\Yatri\\target folder to find exe unity file");
 
 			}
 		}catch(Exception ex) {
@@ -47,8 +49,28 @@ public class Render {
 	}
 
 
+	/**
+	 * Method to fetch URDF file 
+	 */
 	public void fetchURDF(){
+		try {
+			reader.setPrompt(ColorCodes.BLUE + "Select design of rover to be implemented:" + ColorCodes.RESET);
+			String response = reader.readLine();
 
+			if (response.equalsIgnoreCase("One Shape")) {
+
+				String fileURL="https://raw.githubusercontent.com/ros/urdf_tutorial/ros1/urdf/01-myfirst.urdf";
+				URL url = new URL(fileURL);
+				log.info("Fetching URDF");
+
+				FileUtils.copyURLToFile(url, new File("urdf.xml"));
+				
+				log.info("URDF file downloaded at SER515-Spring22-Team12\\Yatri\\target folder.");
+
+			}
+		}catch(Exception ex) {
+			log.error("Exception occured :"+ ex.getMessage());
+		}
 	}
 
 }

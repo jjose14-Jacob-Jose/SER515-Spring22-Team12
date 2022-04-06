@@ -4,7 +4,7 @@ import org.apache.log4j.Logger;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.Yatri.config.Config;
-import com.Yatri.views.UnityView;
+import com.Yatri.views.View;
 
 @SpringBootApplication
 public class YatriApplication{
@@ -17,7 +17,7 @@ public class YatriApplication{
 		Config.configure();
 
 		log.info("Fetching Unity Download View");
-		UnityView view = new UnityView();
+		View view = new View();
 		view.getView();
 	}
 
