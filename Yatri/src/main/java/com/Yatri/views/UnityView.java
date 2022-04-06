@@ -12,7 +12,6 @@ public class UnityView extends View {
 	Logger log= Logger.getLogger(UnityView.class);
 
 	public UnityView() {
-		super(null, "Unity");
 	}
 
 	@Override
