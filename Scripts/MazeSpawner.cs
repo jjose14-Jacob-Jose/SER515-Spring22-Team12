@@ -1,9 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-//<summary>
-//Game object, that creates maze and instantiates it in scene
-//</summary>
+
 public class MazeSpawner : MonoBehaviour {
 	public enum MazeGenerationAlgorithm{
 		PureRecursive,
