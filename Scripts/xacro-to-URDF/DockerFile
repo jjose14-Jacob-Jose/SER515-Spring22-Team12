@@ -1,0 +1,42 @@
+FROM ubuntu:20.04
+RUN echo "Set disable_coredump false" >> /etc/sudo.conf
+RUN apt-get update -q
+RUN apt-get upgrade -yq
+RUN DEBIAN_FRONTEND=noninteractive TZ=Etc/UTC apt-get -y install tzdata
+RUN apt install locales
+RUN locale-gen en_US en_US.UTF-8
+RUN update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
+RUN export LANG=en_US.UTF-8
+RUN apt install curl gnupg2 lsb-release -yq
+RUN curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key  -o /usr/share/keyrings/ros-archive-keyring.gpg
+RUN echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(source /etc/os-release && echo $UBUNTU_CODENAME) main"
+RUN tee /etc/apt/sources.list.d/ros2.list > /dev/null
+RUN apt-get install python3 -yq
+RUN apt-get install build-essential -yq
+RUN apt-get install cmake -yq
+RUN apt-get install git -yq
+RUN apt-get install libbullet-dev -yq
+# RUN apt-get install python3-colcon-common-extensions -yq
+RUN apt-get install python3-flake8 -yq
+RUN apt-get install python3-pip -yq
+RUN apt-get install python3-pytest-cov -yq
+RUN apt-get install python3-rosdep -yq
+RUN apt-get install python3-vcstool -yq
+RUN apt-get install python3 -yq
+RUN apt-get install liburdfdom-tools -yq
+RUN apt-get install python3-roslaunch -yq
+RUN  apt-get update \
+  && apt-get install -y wget \
+  && rm -rf /var/lib/apt/lists/*
+
+RUN mkdir -p ~/ros2_foxy/src
+RUN cd ~/ros2_foxy
+RUN wget https://raw.githubusercontent.com/ros2/ros2/foxy/ros2.repos
+RUN vcs import src < ros2.repos
+
+RUN rosdep init
+RUN rosdep update
+RUN rosdep install --from-paths src --ignore-src -y --skip-keys "fastcdr rti-connext-dds-5.3.1 urdfdom_headers"
+
+RUN cd ~/ros2_foxy/
+RUN colcon build --symlink-install
