@@ -1,1 +1,0 @@
-python xacro.py -o ./URDF_Generated.urdf urdf/origin.xacro
