@@ -738,6 +738,92 @@ This results in:
 ```
 
 -------------------------------------------------------------------------------------------------------------------------------------
+
+# Accessing CLI for rover customization
+
+## Building JAR file
+
+- Clone GitHub repository using
+```bash
+git clone -b master git@github.com:ksharm53/SER515-Spring22-Team12.git
+```
+- Go to path 
+```bash
+SER515-Spring22-Team12\Yatri
+```
+- Build JAR file using command
+```bash
+mvn clean install
+```
+- This will create a JAR file with name Yatri-0.0.1-SNAPSHOT.jar in target folder.
+
+## Executing Command Line Interface
+- Go to path 
+```bash
+SER515-Spring22-Team12\Yatri\target
+```
+- Execute JAR using command
+```bash
+java -jar Yatri-0.0.1-SNAPSHOT.jar
+```
+
+## Downloading Customized Unity tool
+
+- Execute below CLI command to initialize tool
+```bash
+init
+```
+- Enter <Yes> OR <Y> for input <Do you want to download pre confgured unity? [Y] Yes     [N] No:>
+- Unity will get downloaded at below path with name UnityHubSetup.
+
+```bash
+SER515-Spring22-Team12\Yatri\target
+```
+- Execute .exe file and follow install steps.
+
+## Downloading sample URDF file
+
+- Execute below CLI command to initialize tool
+```bash
+init
+```
+- Enter <One Shape> for input <Select design of rover to be implemented:>
+```bash
+Select design of rover to be implemented:One Shape
+```
+- You can press tab button for auto suggestion.
+- URDF file will get downloaded at  below path with name urdf.URDF
+
+```bash
+SER515-Spring22-Team12\Yatri\target
+```
+- Import URDF file in Unity.
+
+## Setup customized Rover
+
+- Enter preferred color for rover body input <Select color of rover body to be implemented:>
+```bash
+Select color of rover body to be implemented:blue
+```
+- You can press tab button for auto suggestions.
+
+- Enter preferred size for rover's right wheel <Select size of the Right wheels for rover:>
+```bash
+Select size of the Right wheels for rover:smaller
+```
+
+- Enter preferred size for rover's left wheel <Select size of the Left wheels for rover:>
+```bash
+Select size of the Left wheels for rover:smaller
+```
+- press Enter
+- URDF file will get downloaded at below path with name Yatri-URDF.urdf. 
+
+```bash
+SER515-Spring22-Team12\Yatri\target
+```
+- Import URDF file in Unity.
+
 -------------------------------------------------------------------------------------------------------------------------------------
 # # #GItHub Cleanup work:
 

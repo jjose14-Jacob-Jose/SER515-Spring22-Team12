@@ -81,6 +81,9 @@ public class View {
 
 				// function to fetch URDF
 				service.fetchURDF();
+				
+				// function Rover URDF
+				service.fetchCustomizedURDF(completer);
 				result= true;
 			}
 
@@ -115,7 +118,7 @@ public class View {
 	void addTabProperties() {	
 
 		List<Completer> completers = new ArrayList<Completer>();
-		completers.add(new ArgumentCompleter(new StringsCompleter("One Shape", "Multiple", "Origins", "Material Girl","Finished Model"), new NullCompleter()));
+		completers.add(new ArgumentCompleter(new StringsCompleter("One Shape"), new NullCompleter()));
 		completer = new AggregateCompleter(completers);
 		reader.addCompleter(completer);
 
