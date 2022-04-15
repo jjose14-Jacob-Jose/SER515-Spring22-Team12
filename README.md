@@ -776,3 +776,60 @@ The other folders, including Design Docs, Library, Logs, Packages, ProjectSettin
 -The Library folder contains the files like PREFS, ASSET, JSON Source file, CATALOG file, some text files and some folders which were put altogether after cleaning.
 -Also the Packages folder contains just the JSON source files. No other types were placec in this particular folder.
 
+-------------------------------------------------------------------------------------------------------------------------------------
+
+# Making Rover Movement Autonomous using SLAM and ROS2
+
+## Environment setup
+
+- Install the Unity Editor(same version we used)
+- Set Up the ROS 2 Environment
+- Build the Docker container(Link- https://github.com/Unity-Technologies/Robotics-Nav2-SLAM-Example/blob/main/ros2_docker/Dockerfile)
+
+After environment is set up: 
+
+- Scripts
+
+Scripts are added according to the requirements.
+
+AGVController
+The Automated Guided Vehicle Controller. This Monobehaviour serves as a bridge between externally issued control signals and the ArticulationBody physics classes that we rely on to move our robots in physically accurate ways.
+
+- Clock
+In order to keep ROS 2 nodes and our time-dependent code in Unity synced, we define a Clock class that serves as an abstraction layer to ensure we use the same interface to access either Unity time or a ROS 2 time source. For the purposes of this example, we assume use_sim_time is true, and that Unity is providing the definitive clock.
+
+- LaserScanSensor
+A simple implementation of a "perfect" 2-dimensional LIDAR sensor which provides scans instantaneously and without any signal noise. We are working hard to implement accurate, high-fidelity sensor models to replace simple examples like this in the future.
+
+- ROSClockPublisher
+As the name implies, this publishes the output of our Clock class to the ROS /clock topic at fixed intervals. This allows other ROS 2 nodes to subscribe and stay in sync with the currently simulated time.
+
+- ROSTransformTreePublisher
+This class, along with TimeStamp, TransformExtensions, and TransformTreeNode, allows us to construct and publish tf2::TFMessages to ROS 2, representing the current state of the physical simulation in Unity.
+
+###Prefabs
+A few objects in our scene needed to be modified manually from what is produced by default by our tools. Prefabs are a useful way to modify and store specially configured objects for a particular scene.
+
+
+
+###Marker
+A simple sphere used to visualize LaserScan hits in the scene.
+
+###ManualConfig
+Often to support a specific use case in Unity, we need to modify an imported URDF to account for problematic mesh issues, like intersecting physics colliders, and to manually integrate components that we haven't implemented automated support for yet, like attaching a LaserScan sensor to the robot. If you double-click this prefab, Unity will display the Prefab Hierarchy in place of the usual Scene Hierarchy.
+
+#The ROS 2 Workspace
+
+
+The ROS 2 workspace is relatively simple for this Project, as we are, for the most part, just calling the default Nav2 and slam_toolbox launch files with small modifications to account for Unity being used as the simulator instead of Gazebo.
+
+Launch file (unity_slam_example.py)
+Simply includes the appropriate LaunchDescriptions from the nav2 example but also ensure use_sim_time is set to True across all Nodes
+
+RViz config (nav2_unity.rviz)
+Defines an RViz layout to support visualizing the topics that will be published from Unity.
+
+Other project files
+package.xml, setup.cfg, and setup.py are simply bog standard ROS 2 package files. We pulled these directly from examples in the ROS 2 tutorials and stripped away anything that was not necessary to support our example.
+
+-------------------------------------------------------------------------------------------------------------------------------------
