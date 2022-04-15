@@ -1,7 +1,6 @@
 package com.Yatri.utility;
 
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.OutputStream;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -39,10 +38,58 @@ public class CreateXML {
 	 */
 	public void preparebaseURDF(String baselinkColor, String rightWheelSize, String leftWheelSize) throws ParserConfigurationException, TransformerException {		
 
+		System.out.println("baselinkColor: "+ baselinkColor + " rightWheelSize: "+ rightWheelSize + " leftWheelSize: "+ leftWheelSize);
+		
 		DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
-
 		Document doc = docBuilder.newDocument();
+
+		try (FileOutputStream output =new FileOutputStream("Yatri-URDF.xml")) {
+			// Method to create generic XML
+			prepareGenericXML(doc);		 
+
+			// Factory Design Pattern
+			if(baselinkColor.trim().equalsIgnoreCase("blue")) {
+				baselink= new BlueBaseLink();
+			}
+			else if(baselinkColor.trim().equalsIgnoreCase("orange")) {
+				baselink= new OrangeBaseLink();
+			}
+
+			baselink.addBaseToRover(doc);
+
+
+			// Factory Design Pattern
+			if(rightWheelSize.trim().equalsIgnoreCase("bigger")) {
+				rightWheel= new BiggerRightWheel();
+			}
+			else if(rightWheelSize.trim().equalsIgnoreCase("smaller")) {
+				rightWheel= new SmallerRightWheel();
+			}
+
+			rightWheel.addRightWheelToRover(doc);
+
+
+			// Factory Design Pattern
+			if(leftWheelSize.trim().equalsIgnoreCase("smaller")) {
+				leftWheel= new SmallerLeftWheel();
+			}
+			else if(rightWheelSize.trim().equalsIgnoreCase("bigger")) {
+				leftWheel= new BiggerLeftWheel();
+			}
+
+			leftWheel.addLeftWheelToRover(doc);
+
+			writeXml(doc, output);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	private void prepareGenericXML(Document doc) {
+
 		Element rootElement = doc.createElement("robot");
 		rootElement.setAttribute("name", "myfirst");
 		doc.appendChild(rootElement);
@@ -280,46 +327,7 @@ public class CreateXML {
 
 		Element frameName = doc.createElement("frameName");
 		pluginAg.appendChild(frameName);
-		frameName.setTextContent("sensor_laser"); 
-
-		// Factory Design Pattern
-		if(baselinkColor.equalsIgnoreCase("blue")) {
-			baselink= new BlueBaseLink();
-		}
-		else if(baselinkColor.equalsIgnoreCase("orange")) {
-			baselink= new OrangeBaseLink();
-		}
-
-		baselink.addBaseToRover(doc);
-
-
-		// Factory Design Pattern
-		if(rightWheelSize.equalsIgnoreCase("bigger")) {
-			rightWheel= new BiggerRightWheel();
-		}
-		else if(rightWheelSize.equalsIgnoreCase("smaller")) {
-			rightWheel= new SmallerRightWheel();
-		}
-
-		rightWheel.addRightWheelToRover(doc);
-
-
-		// Factory Design Pattern
-		if(leftWheelSize.equalsIgnoreCase("smaller")) {
-			leftWheel= new SmallerLeftWheel();
-		}
-		else if(rightWheelSize.equalsIgnoreCase("bigger")) {
-			leftWheel= new BiggerLeftWheel();
-		}
-
-		leftWheel.addLeftWheelToRover(doc);
-
-
-		try (FileOutputStream output =new FileOutputStream("Yatri-URDF.xml")) {
-			writeXml(doc, output);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		frameName.setTextContent("sensor_laser");
 
 	}
 
