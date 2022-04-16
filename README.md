@@ -862,6 +862,37 @@ The other folders, including Design Docs, Library, Logs, Packages, ProjectSettin
 -The Library folder contains the files like PREFS, ASSET, JSON Source file, CATALOG file, some text files and some folders which were put altogether after cleaning.
 -Also the Packages folder contains just the JSON source files. No other types were placec in this particular folder.
 
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Testing of UI:
+The User Interfaces has been created for the project using Unity UIs. The UI has been created are:
+
+-MainMenu
+
+-ConfigMenu
+
+-SimulateMenu
+
+-InformationMenu
+
+After creating this UIs, I worked on its testing to check all are working perfectly as expected.
+
+-Primarily, MainMenu is the first UI with which user will interact first. It contains Environment Configuration, Simulation Setup, Information and Exit buttons. All the buttons were tested and working perfectly. They were navigating perfectly to the directed other UIs. The Exit button exits from the program. 
+
+- When the Environment Configuration button is clicked, it navigates to ConfigMenu UI. This UI contains Manual Setup, Auto Setup and Back buttons. When back button is clicked, it navigates back to MainMenu. The button is working perfectly.
+
+-Next, the Simulation Setup button in MainMenu when clicked, it navigates to the new UI of SimulateMenu. This function is working correctly with the expected output.
+
+-In SimulateMenu, there are different options for the configuration of the project elements. Here, there are dropdown options for selecting maze size, selecting terrain and selecting type of wheels. The dropdown is showing the different options. Here, there are two other options- Back and Submit.
+
+-After this, there is Information button in the MainMenu. When this button is clicked, it navigates to the Information UI. This UI and the function is properly functioning. 
+
+-In the Information UI, we have given the information about the team and the team members. The names of all the team members are mentioned in this page. This UI also contains Back button to navigate back to the MainMenu UI.
+
+-All the components in each UI such as texts and buttons, were placed in a component to keep all the elements in a combined form. This was noted and marked in the testing part. This feature helps to combine all elements of UI so that they can be accessed easily and combinedly.
+
+-The goal regarding the UI, which was decided during planning were achieved and all the UIs are working as per expectation. (Noted during testing of UIs).
+
 -------------------------------------------------------------------------------------------------------------------------------------
 
 # Making Rover Movement Autonomous using SLAM and ROS2
@@ -1037,3 +1068,4 @@ In the Topic field, enter /scan.
 For messages with stamped headers, we need to specify how we want the visualizations to be drawn with respect to the TF tree. This is done via the TF Tracking Settings; click it to expand the options.
 
 In this case, we want the laser scan to be drawn with respect to the most recent transform we have for its parent: Turtlebot's base_scan. To do so, change the Type to Track Latest. The TF Topic should be left as the default /tf.
+
